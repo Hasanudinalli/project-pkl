@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\ObatController;
+use App\Http\Controllers\PembeliController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,53 +30,77 @@ Auth::routes(
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::group(['prefix' => 'admin', 'middleware' =>
-  //  ['auth',
-    //    'role:admin',
-    //]], function () {
-    //Route::get('/', function () {
-      //  return 'halaman admin';
-    //});
+// Route::group(['prefix' => 'admin', 'middleware' =>
+//     ['auth',
+//         'role:admin',
+//     ]], function () {
+//     Route::get('/', function () {
+//         return 'halaman admin';
+//     });
 
-    //Route::get('profile', function () {
-      //  return 'halaman profile admin';
-    //});
-//});
+//     Route::get('profile', function () {
+//         return 'halaman profile admin';
+//     });
+// });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
-    Route::get('buku', function(){
-        return view ('buku.index');
+// Route::group(['prefix' => 'pengguna', 'middleware' =>
+//     ['auth',
+//         'role:pengguna',
+//     ]], function () {
+//     Route::get('/', function () {
+//         return 'halaman pengguna';
+//     });
+
+//     Route::get('profile', function () {
+//         return 'halaman profile pengguna';
+//     });
+// });
+
+// Route::group(['prefix' => 'pembelian', 'middleware' =>
+//     ['auth',
+//         'role:admin|kasir',
+//     ]], function () {
+//     Route::get('/', function () {
+//         return 'halaman pembelian';
+//     });
+
+//     Route::get('laporan', function () {
+//         return 'halaman laporan pembelian';
+//     });
+// });
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('buku', function () {
+        return view('buku.index');
     })->middleware(['role:admin|pengguna']);
 
-    Route::get('pengarang', function(){
-        return view ('pengarang.index'); 
+    Route::get('pengarang', function () {
+        return view('pengarang.index');
     })->middleware(['role:admin']);
+
+    Route::get('obat', function () {
+        return view('obat.index');
+    })->middleware(['role:admin|pengguna']);
+
+    Route::resource('obat', ObatController::class);
+
+    Route::get('pembeli', function () {
+        return view('pembeli.index');
+    })->middleware(['role:admin|pengguna']);
+
+    Route::resource('pembeli', PembeliController::class);
+
+    Route::get('karyawan', function () {
+        return view('karyawan.index');
+    })->middleware(['role:admin|pengguna']);
+
+    Route::get('transaksi', function () {
+        return view('transaksi.index');
+    })->middleware(['role:admin|pengguna']);
+
+    Route::resource('karyawan', KaryawanController::class);
+    Route::resource('obat', ObatController::class);
+
+    Route::resource('transaksi', TransaksiController::class);
+
 });
-
-//Route::group(['prefix' => 'pengguna', 'middleware' =>
-    //['auth',
-      //  'role:pengguna',
-    //]], function () {
-    //Route::get('/', function () {
-     //   return 'halaman pengguna';
-    //});
-
-    //Route::get('profile', function () {
-      //  return 'halaman profile pengguna';
-    //});
-//});
-
-Route::group(['prefix' => 'pembelian', 'middleware' =>
-    ['auth',
-        'role:adminkasir',
-    ]], function () {
-     Route::get('/', function () {
-         return 'halaman pembelian';
-    });
-
-    Route::get('laporan', function () {
-        return 'halaman laporan pembelian';
-    });
-});
-
-

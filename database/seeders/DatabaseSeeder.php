@@ -16,6 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            ObatSeeder::class,
+        ]);
+        $this->call([
+            TransaksiSeeder::class,
+        ]);
     }
 }

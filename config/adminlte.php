@@ -248,23 +248,37 @@ return [
         ],
         
         [
-            'text' => 'buku',
-            'url'  => 'admin/buku',
+            'text' => 'order',
+            'url'  => 'admin/order',
             'icon' => 'far fa-fw fa-file'
         ],
 
         [
-            'text' => 'pengarang',
-            'url'  => 'admin/pengarang',
+            'text' => 'obat',
+            'url'  => 'admin/obat',
             'icon' => 'far fa-fw fa-file'
         ],
 
         [
-            'text' => 'menu lainnya',
-            'url'  => '#',
+            'text' => 'karyawan',
+            'url'  => 'admin/karyawan',
             'icon' => 'far fa-fw fa-file'
-
         ],
+
+        
+        [
+            'text' => 'transaksi',
+            'url'  => 'admin/transaksi',
+            'icon' => 'far fa-fw fa-file'
+        ],
+
+        [
+            'text' => 'pembeli',
+            'url'  => 'admin/pembeli',
+            'icon' => 'far fa-fw fa-file'
+        ],
+
+        
     ],
 
     /*
