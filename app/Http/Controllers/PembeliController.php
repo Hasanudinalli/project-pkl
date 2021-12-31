@@ -14,6 +14,8 @@ class PembeliController extends Controller
      */
     public function index()
     {
+        $pembeli = Pembeli::all();
+        return view('pembeli.index', compact('pembeli'));
         //
     }
 
@@ -24,6 +26,8 @@ class PembeliController extends Controller
      */
     public function create()
     {
+        return view('pembeli.create');
+
         //
     }
 
@@ -35,6 +39,24 @@ class PembeliController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+
+            'id' => 'required',
+            'nama_pembeli' => 'required',
+            'alamat' => 'required',
+            'usia' => 'required',
+        ]);
+
+        $pembeli = new Pembeli;
+        $pembeli->id = $request->id;
+        $pembeli->nama_pembeli = $request->nama_pembeli;
+        $pembeli->alamat = $request->alamat;
+        $pembeli->usia = $request->usia;
+
+        
+
+        $pembeli->save();
+        return redirect()->route('pembeli.index');
         //
     }
 
@@ -44,8 +66,10 @@ class PembeliController extends Controller
      * @param  \App\Models\pembeli  $pembeli
      * @return \Illuminate\Http\Response
      */
-    public function show(pembeli $pembeli)
+    public function show($id)
     {
+        $pembeli = Pembeli::findOrFail($id);
+        return view('pembeli.show', compact('pembeli'));
         //
     }
 
@@ -55,8 +79,10 @@ class PembeliController extends Controller
      * @param  \App\Models\pembeli  $pembeli
      * @return \Illuminate\Http\Response
      */
-    public function edit(pembeli $pembeli)
+    public function edit($id)
     {
+        $pembeli = Pembeli::findOrFail($id);
+        return view('pembeli.edit', compact('pembeli'));
         //
     }
 
@@ -69,6 +95,18 @@ class PembeliController extends Controller
      */
     public function update(Request $request, pembeli $pembeli)
     {
+        $request->validate([
+            'id' => 'required|unique:posts|max:150',
+                'nama_pembeli' => 'required',
+                'alamat' => 'required',
+                'usia' => 'required',
+
+             ]);
+                   
+             $pembeli = Pembeli::find($id)->update($request->all()); 
+                    
+             return back()->with('success',' Data telah diperbaharui!');
+            //
         //
     }
 
@@ -78,8 +116,11 @@ class PembeliController extends Controller
      * @param  \App\Models\pembeli  $pembeli
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pembeli $pembeli)
+    public function destroy($id)
     {
+        $pembeli = Pembeli::findOrFail($id);
+        $pembeli->delete();
+        return redirect()->route('pembeli.index');
         //
     }
 }

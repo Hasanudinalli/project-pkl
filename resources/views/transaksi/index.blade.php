@@ -1,94 +1,76 @@
-@extends('adminlte::page')
+<!DOCTYPE html>
+<html>
 
-@section('content_header')
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1 class="m-0">Data Obat</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+<head>
+    <title>Transaksi</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
 
-@section('content')
+<body>
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
+        <h2 align="center">Transaksi Apotek</h2>
+        <h5>Nama Pembeli : </h5>
+        <h5>Tanggal Transaksi : </h5>
+        <h5 align="height">Nama Kasir : </h5>
+        <form action="{{ route('transaksi.create') }}" method="POST">
+            @csrf
 
-                        <a href="{{ route('transaksi.create') }}" class="btn btn-sm btn-primary float-right">Tambah
-                            Data Obat</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tr>
-                                    <th>Id Pembeli</th>
-                                    <th>total Harga</th>
-                                    
-
-                                </tr>
-                                @php $no=1; @endphp
-                                @foreach ($transaksi as $data)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $data->Id  }}</td>
-                                        <td>{{ $data->Total  }}</td>
-                                        
-                                        <td>
-                                            <form action="{{ route('transaksi.destroy', $data->id) }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <a href="{{ route('transaksi.edit', $data->id) }}"
-                                                    class="btn btn-info">Edit</a>
-                                                <a href="{{ route('transaksi.show', $data->id) }}"
-                                                    class="btn btn-warning">Show</a>
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
-                                                <button type="button" name="add" id="add" class="btn btn-success">Add
-                                                    More</button>
-                                    </tr>
-                                    </form>
-                                    <script type="text/javascript">
-                                        var i = 0;
-
-                                        $("#add").click(function() {
-
-                                            ++i;
-
-                                            $("#dynamicTable").append('<tr><td><input type="number" name="addmore[' + i +
-                                                '][name]" placeholder="Enter your Name" class="form-control" /></td><td><input type="text" name="addmore[' +
-                                                i +
-                                                '][qty]" placeholder="Enter your Qty" class="form-control" /></td><td><input type="text" name="addmore[' +
-                                                i +
-                                                '][price]" placeholder="Enter your Price" class="form-control" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>'
-                                                );
-                                        });
-
-                                        $(document).on('click', '.remove-tr', function() {
-                                            $(this).parents('tr').remove();
-                                        });
-                                    </script>
-                                    </td>
-                                    </tr>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-            </div>
-        </div>
+            @endif
+
+            @if (Session::has('success'))
+                <div class="alert alert-success text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    <p>{{ Session::get('success') }}</p>
+                </div>
+            @endif
+
+            <table class="table table-bordered" id="dynamicTable">
+                <tr>
+                    <th>Nama Obat</th>
+                    <th>Jumlah</th>
+                    <th>Action</th>
+
+                </tr>
+                <tr>
+                    <td><input type="text" name="addmore[0][nama_obat]" placeholder="Enter your Name"
+                            class="form-control" /></td>
+                    <td><input type="number" name="transaksi[0][jumlah_bayar]" placeholder="Enter your Qty"
+                            class="form-control" /></td>
+                    <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+                </tr>
+            </table>
+
+            <button type="submit" class="btn btn-success">Bayar</button>
+        </form>
     </div>
-@endsection
+    
 
-@section('css')
+    <script type="text/javascript">
+        var i = 0;
 
-@endsection
+        $("#add").click(function() {
 
-@section('js')
+            ++i;
 
-@endsection
+        });
+        
+
+        $(document).on('click', '.remove-tr', function() {
+            $(this).parents('tr').remove();
+        });
+    </script>
+    
+
+</body>
+
+</html>

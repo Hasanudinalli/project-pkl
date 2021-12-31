@@ -10,21 +10,12 @@
                         <form action="{{ route('karyawan.update', $karyawan->id) }}" method="post">
                             @csrf
                             @method('put')
-                            <div class="form-group">
-                                <label for="">Masukan Id Karyawan</label>
-                                <input type="text" name="id_karyawan" value="{{ $karyawan->id_karyawan }}"
-                                    class="form-control @error('id_karyawan') is-invalid @enderror">
-                                @error('id_karyawan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
                             <div class="form-group">
                                 <label for="">Masukan Nama Karyawan</label>
-                                <input type="text" name="nama_karyawan" value="{{ $karyawan->nama_karyawan }}"
-                                    class="form-control @error('nama_karyawan') is-invalid @enderror">
-                                @error('nama_karyawan')
+                                <input type="text" name="nama" value="{{ $karyawan->nama }}"
+                                    class="form-control @error('nama') is-invalid @enderror">
+                                @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -42,8 +33,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="">Nik</label>
-                                <input type="text" name="stok" value="{{ $karyawan->nik }}"
+                                <label for="">Masukan Nik</label>
+                                <input type="text" name="nik" value="{{ $karyawan->nik }}"
                                     class="form-control @error('nik') is-invalid @enderror">
                                 @error('nik')
                                     <span class="invalid-feedback" role="alert">
@@ -53,7 +44,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="">No Telp</label>
+                                <label for="">Masukan No.Telp</label>
                                 <input type="text" name="no_telp" value="{{ $karyawan->no_telp }}"
                                     class="form-control @error('no_telp') is-invalid @enderror">
                                 @error('no_telp')

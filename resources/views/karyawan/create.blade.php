@@ -10,19 +10,9 @@
                         <form action="{{ route('karyawan.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="">Masukan Id Karyawan</label>
-                                <input type="text" name="id_karyawan"
-                                    class="form-control @error('id_karyawan') is-invalid @enderror">
-                                @error('id_karyawan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label for="">Masukan Nama Karyawan</label>
-                                <input type="text" name="nama_karyawan" class="form-control @error('nama_karyawan') is-invalid @enderror">
-                                @error('nama_karyawan')
+                                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror">
+                                @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -47,16 +37,15 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Masukan No Telp</label>
-                                <input type="text" name="no_telp" class="form-control @error('no_telp') is-invalid @enderror">
+                                <label for="">Masukan No. Telp</label>
+                                <input type="text" name="no_telp"
+                                    class="form-control @error('no_telp') is-invalid @enderror">
                                 @error('no_telp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-
-                            
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
                                 <button type="submit" class="btn btn-outline-primary">Simpan</button>

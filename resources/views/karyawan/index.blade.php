@@ -21,27 +21,25 @@
                     <div class="card-header">
 
                         <a href="{{ route('karyawan.create') }}" class="btn btn-sm btn-primary float-right">Tambah
-                            Data Obat</a>
+                            Data Karyawan</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
-                                
-                                    <th>id karyawan</th>
-                                    <th>nama karyawan</th>
-                                    <th>alamat</th>
-                                    <th>nik</th>
-                                    <th>no telp</th>
-                                    
+                                    <th>NO</th>
+                                    <th>Nama Karyawan</th>
+                                    <th>Alamat</th>
+                                    <th>Nik</th>
+                                    <th>No. Telp</th>
+                                    <th>Aksi</th>
 
                                 </tr>
                                 @php $no=1; @endphp
                                 @foreach ($karyawan as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->id_karyawan }}</td>
-                                        <td>{{ $data->nama_karyawan }}</td>
+                                        <td>{{ $data->nama }}</td>
                                         <td>{{ $data->alamat }}</td>
                                         <td>{{ $data->nik }}</td>
                                         <td>{{ $data->no_telp }}</td>
@@ -55,31 +53,8 @@
                                                     class="btn btn-warning">Show</a>
                                                 <button type="submit" class="btn btn-danger"
                                                     onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
-                                                <button type="button" name="add" id="add" class="btn btn-success">Add
-                                                    More</button>
-                                    </tr>
-                                    </form>
-                                    <script type="text/javascript">
-                                        var i = 0;
-
-                                        $("#add").click(function() {
-
-                                            ++i;
-
-                                            $("#dynamicTable").append('<tr><td><input type="number" name="addmore[' + i +
-                                                '][name]" placeholder="Enter your Name" class="form-control" /></td><td><input type="text" name="addmore[' +
-                                                i +
-                                                '][qty]" placeholder="Enter your Qty" class="form-control" /></td><td><input type="text" name="addmore[' +
-                                                i +
-                                                '][price]" placeholder="Enter your Price" class="form-control" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>'
-                                                );
-                                        });
-
-                                        $(document).on('click', '.remove-tr', function() {
-                                            $(this).parents('tr').remove();
-                                        });
-                                    </script>
-                                    </td>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </table>

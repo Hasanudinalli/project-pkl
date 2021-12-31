@@ -93,14 +93,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('karyawan', function () {
         return view('karyawan.index');
     })->middleware(['role:admin|pengguna']);
+    Route::resource('karyawan', KaryawanController::class);
 
     Route::get('transaksi', function () {
         return view('transaksi.index');
     })->middleware(['role:admin|pengguna']);
-
-    Route::resource('karyawan', KaryawanController::class);
-    Route::resource('obat', ObatController::class);
-
     Route::resource('transaksi', TransaksiController::class);
 
+
+    
 });

@@ -10,28 +10,48 @@
                         <form action="{{ route('obat.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="">Masukan Nama Pembeli</label>
-                                <input type="text" name="nama_pembeli"
-                                    class="form-control @error('nama_pembeli') is-invalid @enderror">
-                                @error('nama_pembeli')
+                                <label for="">Masukan Kode</label>
+                                <input type="text" name="id_obat"
+                                    class="form-control @error('kode') is-invalid @enderror">
+                                @error('kode')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Masukan Alamat</label>
-                                <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
-                                @error('alamat')
+                                <label for="">Masukan Nama</label>
+                                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror">
+                                @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Masukan Usia</label>
-                                <input type="text" name="usia" class="form-control @error('usia') is-invalid @enderror">
-                                @error('usia')
+                                <label for="">Masukan Harga</label>
+                                <input type="text" name="harga" class="form-control @error('harga') is-invalid @enderror">
+                                @error('harga')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Masukan Stok</label>
+                                <input type="text" name="stok" class="form-control @error('stok') is-invalid @enderror">
+                                @error('stok')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Masukan Satuan</label>
+                                <input type="text" name="satuan" class="form-control @error('satuan') is-invalid @enderror">
+                                @error('satuan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

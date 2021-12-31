@@ -9,46 +9,46 @@
                     <div class="card-body">
                         <form action="{{ route('pembeli.store') }}" method="post">
                             @csrf
-                             <div class="form-group">
-                                <label for="">Masukan Nama Obat</label>
-                                <input type="text" name="nama"
-                                    class="form-control @error('nama') is-invalid @enderror">
-                                @error('nama')
+                            <div class="form-group">
+                                <label for="">Masukan id </label>
+                                <input type="text" name="id"
+                                    class="form-control @error('id') is-invalid @enderror">
+                                @error('id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                             <div class="form-group">
-                                <label for="">Masukan Harga</label>
-                                <input type="text" name="harga"
-                                    class="form-control @error('harga') is-invalid @enderror">
-                                @error('harga')
+                            <div class="form-group">
+                                <label for="">Masukan Nama Pembeli</label>
+                                <input type="text" name="nama_pembeli" class="form-control @error('nama_pembeli') is-invalid @enderror">
+                                @error('nama_pembeli')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                             <div class="form-group">
-                                <label for="">Masukan Stok</label>
-                                <input type="text" name="stok"
-                                    class="form-control @error('stok') is-invalid @enderror">
-                                @error('stok')
+
+                            <div class="form-group">
+                                <label for="">Masukan Alamat</label>
+                                <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
+                                @error('alamat')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                             <div class="form-group">
-                                <label for="">Masukan Satuan</label>
-                                <input type="text" name="satuan"
-                                    class="form-control @error('satuan') is-invalid @enderror">
-                                @error('satuan')
+
+                            <div class="form-group">
+                                <label for="">Masukan Usia</label>
+                                <input type="text" name="usia" class="form-control @error('usia') is-invalid @enderror">
+                                @error('usia')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                            
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
                                 <button type="submit" class="btn btn-outline-primary">Simpan</button>
@@ -68,4 +68,3 @@
 @section('js')
 
 @endsection
-

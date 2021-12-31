@@ -14,9 +14,10 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksi = transaksi::all();  
-        return view('transaksi.index', ['transaksi' => $transaksi]); 
         //
+        $transaksi = transaksi::all();
+        return view('transaksi.index', compact('transaksi'));
+
     }
 
     /**
@@ -26,9 +27,9 @@ class TransaksiController extends Controller
      */
     public function create()
     {
+        //
         return view('transaksi.create');
 
-        //
     }
 
     /**
@@ -39,17 +40,6 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id' => 'required|unique:posts|max:150',
-            'total_harga' => 'required',
-            
-          ]);
-        
-          $input = $request->all();
-        
-          $transaksi = transaksi::create($input);
-         
-          return back()->with('success',' Post baru berhasil dibuat.');
         //
     }
 
@@ -59,10 +49,8 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(transaksi $transaksi)
     {
-        $transaksi = Transaksi::findOrFail($id);
-        return view('transaksi.show', compact('transaksi'));
         //
     }
 
@@ -72,13 +60,8 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function edit(transaksi $id)
+    public function edit(transaksi $transaksi)
     {
-        $transaksi = transaksi::findOrFail($id);
-   
-        return view('transaksi.edit', [
-               'transaksi' => $transaksi
-        ]);
         //
     }
 
@@ -89,16 +72,8 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, transaksi $id)
+    public function update(Request $request, transaksi $transaksi)
     {
-        $request->validate([
-        'id' => 'required|unique:posts|max:150',
-            'total_harga' => 'required',
-         ]);
-               
-         $transaksi = transaksi::find($id)->update($request->all()); 
-                
-         return back()->with('success',' Data telah diperbaharui!');
         //
     }
 
@@ -108,14 +83,8 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(transaksi $id)
+    public function destroy(transaksi $transaksi)
     {
-        $transaksi = transaksi::find($id);
-
-        $transaksi->delete();
-     
-        return back()->with('success',' Penghapusan berhasil.');
-
         //
     }
 }

@@ -11,6 +11,16 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
+                                <label for="">Masukan Id </label>
+                                <input type="text" name="id" value="{{ $pembeli->id }}"
+                                    class="form-control @error('id') is-invalid @enderror">
+                                @error('id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="">Masukan Nama Pembeli</label>
                                 <input type="text" name="nama_pembeli" value="{{ $pembeli->nama_pembeli }}"
                                     class="form-control @error('nama_pembeli') is-invalid @enderror">
@@ -20,28 +30,6 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="">Masukan Alamat</label>
-                                <input type="text" name="alamat" value="{{ $pembeli->alamat }}"
-                                    class="form-control @error('alamat') is-invalid @enderror">
-                                @error('alamat')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="">Masukan Usia</label>
-                                <input type="text" name="usia" value="{{ $pembeli->usia }}"
-                                    class="form-control @error('usia') is-invalid @enderror">
-                                @error('usia')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
                                 <button type="submit" class="btn btn-outline-primary">Simpan</button>
@@ -53,3 +41,4 @@
         </div>
     </div>
 @endsection
+

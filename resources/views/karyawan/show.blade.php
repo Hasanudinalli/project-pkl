@@ -11,27 +11,17 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for=""> Id Karyawan</label>
-                                <input type="text" name="id_karyawan" value="{{ $karyawan->id_karyawan }}"
-                                    class="form-control @error('id_karyawan') is-invalid @enderror" disabled>
-                                @error('id_karyawan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                           <div class="form-group">
-                                <label for=""> Nama Karyawan </label>
-                                <input type="text" name="nama_karyawan" value="{{ $karyawan->nama_karyawan }}"
-                                    class="form-control @error('nama_karyawan') is-invalid @enderror" disabled>
-                                @error('nama_karyawan')
+                                <label for=""> Nama Karyawan</label>
+                                <input type="text" name="nama" value="{{ $karyawan->nama }}"
+                                    class="form-control @error('nama') is-invalid @enderror" disabled>
+                                @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for=""> Alamat</label>
+                                <label for="">Alamat</label>
                                 <input type="text" name="alamat" value="{{ $karyawan->alamat }}"
                                     class="form-control @error('alamat') is-invalid @enderror" disabled>
                                 @error('alamat')
@@ -51,7 +41,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for=""> No telp</label>
+                                <label for=""> NO. Telp</label>
                                 <input type="text" name="no_telp" value="{{ $karyawan->no_telp }}"
                                     class="form-control @error('no_telp') is-invalid @enderror" disabled>
                                 @error('no_telp')
