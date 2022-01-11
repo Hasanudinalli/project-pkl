@@ -19,11 +19,17 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ObatSeeder::class,
         ]);
-        $this->call([
-            TransaksiSeeder::class,
-        ]);
+        
         $this->call([
             PembeliSeeder::class,
+        ]);
+
+        $this->call([
+            OrderSeeder::class,
+        ]);
+
+        $this->call([
+            KaryawanSeeder::class,
         ]);
         
     }

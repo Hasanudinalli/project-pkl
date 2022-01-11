@@ -4,6 +4,7 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -99,6 +100,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         return view('transaksi.index');
     })->middleware(['role:admin|pengguna']);
     Route::resource('transaksi', TransaksiController::class);
+
+    Route::get('order', function () {
+        return view('order.index');
+    })->middleware(['role:admin|pengguna']);
+    Route::resource('order', OrderController::class);
 
 
     

@@ -14,6 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $order = Order::all();
+        return view('order.index', compact('order'));
         //
     }
 
@@ -24,6 +26,8 @@ class OrderController extends Controller
      */
     public function create()
     {
+        return view('order.create');
+
         //
     }
 
@@ -35,6 +39,25 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+
+            'id_transaksi' => 'required',
+            'id_karyawan' => 'required',
+            'id_obat' => 'required',
+            'jumlah_obat' => 'required',
+            
+
+        ]);
+
+        $order = Order::findOrFail($id);
+
+        $order->id_transaksi = $request->id_transaksi;
+        $order->id_karyawan = $request->id_karyawan;
+        $order->id_obat = $request->id_obat;
+        $order->jumlah_obat = $request->jumlah_obat;
+
+        $order->save();
+        return redirect()->route('order.index');
         //
     }
 
@@ -44,8 +67,10 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(order $order)
+    public function show($id)
     {
+        $order = Order::findOrFail($id);
+        return view('order.show', compact('order'));
         //
     }
 
@@ -55,8 +80,10 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(order $order)
+    public function edit($id)
     {
+        $order = Order::findOrFail($id);
+        return view('order.edit', compact('order'));
         //
     }
 
@@ -67,9 +94,29 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order $order)
+    public function update(Request $request,$id)
     {
         //
+        // validasi data
+        $validated = $request->validate([
+
+            'id_transaksi' => 'required',
+            'id_karyawan' => 'required',
+            'id_obat' => 'required',
+            'jumlah_obat' => 'required',
+            
+
+        ]);
+
+        $order = Order::findOrFail($id);
+
+        $order->id_transaksi = $request->id_transaksi;
+        $order->id_karyawan = $request->id_karyawan;
+        $order->id_obat = $request->id_obat;
+        $order->jumlah_obat = $request->jumlah_obat;
+
+        $order->save();
+        return redirect()->route('order.index');
     }
 
     /**
@@ -78,8 +125,11 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order $order)
+    public function destroy($id)
     {
+        $order = Order::findOrFail($id);
+        $order->delete();
+        return redirect()->route('order.index');
         //
     }
 }

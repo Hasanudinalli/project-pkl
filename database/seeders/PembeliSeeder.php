@@ -15,7 +15,7 @@ class PembeliSeeder extends Seeder
     public function run()
     {
         $pembeli = pembeli::create([ 'id' => '001','nama_pembeli' => 'hasan', 'alamat' => 'cilisung', 'usia' => 'juin'] );
-        $pembeli = pembeli::create([ 'id' => '001','nama_pembeli' => 'hasan', 'alamat' => 'cilisung', 'usia' => 'juin'] );
+        $pembeli1 = pembeli::create([ 'id' => '002','nama_pembeli' => 'hasan', 'alamat' => 'cilisung', 'usia' => 'juin'] );
 
         
 

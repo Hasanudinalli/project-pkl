@@ -14,25 +14,13 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            
+            $table->id();
 
-            $table->Biginteger('id_transaksi')->unsigned();
-            $table->foreign('id_transaksi')->references('id')
-                ->on('transaksis')->onUpdate('cascade')
-                ->onDelete('cascade');
-
-            $table->Biginteger('id_karyawan')->unsigned();
-            $table->foreign('id_karyawan')->references('id')
-                ->on('karyawans')->onUpdate('cascade')
-                ->onDelete('cascade');
-
-            $table->Biginteger('id_obat')->unsigned();
-            $table->foreign('id_obat')->references('id')
-                ->on('obats')->onUpdate('cascade')
-                ->onDelete('cascade');
-
+            $table->integer('id_transaksi');
+            $table->integer('id_karyawan');
+            $table->integer('id_obat');
             $table->integer('jumlah_obat');
-            $table->integer('total_harga');
+            
 
             $table->timestamps();
         });
