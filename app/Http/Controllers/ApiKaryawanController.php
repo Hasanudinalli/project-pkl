@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
-class ApiUserController extends Controller
+class ApiKaryawanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,16 +13,24 @@ class ApiUserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $karyawan = Karyawan::where('id', 1)
+                 ->where('nama', 'gugg')
+                 ->get();
 
-        return response()->json([
-            'status' => true,
-            'code' => 200,
-            'message' => 'Berhasil',
-            'data' => $user,
-        ]);
-        // api.php
-        //Route::resource('user', ApiUserController::class);
+        if ($karyawan->count() >=1) {
+            return response()->json([
+                'status' => true,
+                'code' => 200,
+                'message' => 'Berhasil',
+                'data' => $karyawan,
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'code' => 404,
+                'message' => 'Gagal',  
+            ]);
+        }
         //
     }
 
@@ -44,7 +52,6 @@ class ApiUserController extends Controller
      */
     public function store(Request $request)
     {
-        
         //
     }
 

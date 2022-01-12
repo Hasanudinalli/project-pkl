@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ApiUserController;
+use App\Http\Controllers\ApiKaryawanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::resource('User', ApiUserController::class);
+Route::resource('Karyawan', ApiKaryawanController::class);
