@@ -52,6 +52,16 @@ class ApiKaryawanController extends Controller
      */
     public function store(Request $request)
     {
+        $karyawan = new ArticleCategory();
+        $karyawan->nama = $request->nama;
+        $karyawan->alamat = $request->alamat;
+        $karyawan->nik = $request->nik;
+        $karyawan->no_telp = $request->no_telp;
+        $karyawan->save();
+        return redirect()->route('karyawan.index');
+
+
+
         //
     }
 
@@ -63,6 +73,22 @@ class ApiKaryawanController extends Controller
      */
     public function show($id)
     {
+        $karyawan = Karyawan::Find($id);
+        if ($karyawan) {
+            return response()->json([
+                'succes' => true,
+                'message' => 'Show Data Karyawan',
+                'data' => $user,
+            ], 200);
+        } else {
+            return response()->json([
+                'succes' => false,
+                'message' => 'Data User Tidak Ditemukan',
+                'data' => [],
+            ], 404);
+        }
+        
+
         //
     }
 
@@ -86,8 +112,29 @@ class ApiKaryawanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $karyawan = Karyawan::find($id);
+        if ($karyawan) {
+        $karyawan->nama = $request->name;
+        $karyawan->alamat = $request->email;
+        $karyawan->nik = $request->nik;
+        $karyawan->no_telp = bcrypt($request->no_telp);
+        $karyawan->save();
+        return response()->json([
+            'succes' => true,
+            'message' => 'data user berhasil di buat',
+            'data' => $karyawan,
+        ], 201);
+
         //
+    }else {
+        return response()->json([
+            'succes' => false,
+            'message' => 'Data User Tidak Ditemukan',
+            'data' => [],
+        ], 404);
+
     }
+ }
 
     /**
      * Remove the specified resource from storage.
@@ -97,6 +144,21 @@ class ApiKaryawanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $karyawan = Karyawan::Find($id);
+        if ($karyawan) {
+            return response()->json([
+                'succes' => true,
+                'message' => 'Data Karyawan Berhasil dihapus',
+                'data' => $user,
+            ], 200);
+        } else {
+            return response()->json([
+                'succes' => false,
+                'message' => 'Data Karyawan Tidak Ditemukan',
+                'data' => [],
+            ], 404);
+        }
+
+        
     }
 }

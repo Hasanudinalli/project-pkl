@@ -44,7 +44,18 @@ class ApiUserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return response()->json([
+            'succes' => true,
+            'message' => 'data user berhasil di buat',
+            'data' => $user,
+        ], 201);
+
+
         //
     }
 
@@ -56,6 +67,21 @@ class ApiUserController extends Controller
      */
     public function show($id)
     {
+        $user = User::Find($id);
+        if ($user) {
+            return response()->json([
+                'succes' => true,
+                'message' => 'Show Data User',
+                'data' => $user,
+            ], 200);
+        } else {
+            return response()->json([
+                'succes' => false,
+                'message' => 'Data User Tidak Ditemukan',
+                'data' => [],
+            ], 404);
+        }
+        
         //
     }
 
@@ -79,8 +105,28 @@ class ApiUserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+        if ($user) {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return response()->json([
+            'succes' => true,
+            'message' => 'data user berhasil di buat',
+            'data' => $user,
+        ], 201);
+
         //
+    }else {
+        return response()->json([
+            'succes' => false,
+            'message' => 'Data User Tidak Ditemukan',
+            'data' => [],
+        ], 404);
+
     }
+}
 
     /**
      * Remove the specified resource from storage.
@@ -90,6 +136,21 @@ class ApiUserController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::Find($id);
+        if ($user) {
+            return response()->json([
+                'succes' => true,
+                'message' => 'Data User Berhasil dihapus',
+                'data' => $user,
+            ], 200);
+        } else {
+            return response()->json([
+                'succes' => false,
+                'message' => 'Data User Tidak Ditemukan',
+                'data' => [],
+            ], 404);
+        }
+
         //
     }
 }
