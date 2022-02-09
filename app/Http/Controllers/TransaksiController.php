@@ -40,6 +40,19 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+
+            'id' => 'required',
+            'total_harga' => 'required',
+
+        ]);
+
+        $transaksi = new transaksi;
+        $transaksi->id = $request->id;
+        $transaksi->total_harga = $request->total_harga;
+
+        $transaksi->save();
+        return redirect()->route('transaksi.index');
         //
     }
 
@@ -49,8 +62,10 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function show(transaksi $transaksi)
+    public function show( $id)
     {
+        $transaksi = Transaksi::findOrFail($id);
+        return view('transaksi.show', compact('transaksi'));
         //
     }
 
@@ -60,8 +75,9 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function edit(transaksi $transaksi)
-    {
+    public function edit($id)
+    {$transaksi = Transaksi::findOrFail($id);
+        return view('transaksi.edit', compact('transaksi'));
         //
     }
 
@@ -72,9 +88,24 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, transaksi $transaksi)
+    public function update(Request $request,$id)
     {
-        //
+        $validated = $request->validate([
+
+            'id' => 'required',
+            'total_harga' => 'required',
+
+
+        ]);
+
+        $transaksi = Transaksi::findOrFail($id);
+
+        $transaksi->id = $request->id;
+        $transaksi->total_harga = $request->total_harga;
+
+
+        $transaksi->save();
+        return redirect()->route('transaksi.index');
     }
 
     /**
@@ -83,8 +114,11 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(transaksi $transaksi)
+    public function destroy( $id)
     {
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->delete();
+        return redirect()->route('transaksi.index');
         //
     }
 }

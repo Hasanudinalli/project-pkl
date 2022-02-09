@@ -11,7 +11,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="">Masukan Kode</label>
-                                <input type="text" name="id_obat"
+                                <input type="text" name="kode"
                                     class="form-control @error('kode') is-invalid @enderror">
                                 @error('kode')
                                     <span class="invalid-feedback" role="alert">

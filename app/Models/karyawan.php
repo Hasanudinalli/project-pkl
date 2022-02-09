@@ -9,8 +9,8 @@ class karyawan extends Model
 {
     use HasFactory;
 
-    protected $visible = ['id_karyawan', 'nama_karyawan', 'alamat', 'nik', 'no_telp'];
-    protected $fillable = ['id_karyawan', 'nama_karyawan', 'alamat', 'nik', 'no_telp'];
+    protected $visible = ['id', 'nama_karyawan', 'alamat', 'nik', 'no_telp'];
+    protected $fillable = ['id', 'nama_karyawan', 'alamat', 'nik', 'no_telp'];
     public $timestamps = true;
 
     

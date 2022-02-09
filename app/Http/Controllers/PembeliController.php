@@ -53,7 +53,7 @@ class PembeliController extends Controller
         $pembeli->alamat = $request->alamat;
         $pembeli->usia = $request->usia;
 
-        
+
 
         $pembeli->save();
         return redirect()->route('pembeli.index');
@@ -93,7 +93,7 @@ class PembeliController extends Controller
      * @param  \App\Models\pembeli  $pembeli
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pembeli $pembeli)
+    public function update(Request $request, pembeli $id)
     {
         $request->validate([
             'id' => 'required|unique:posts|max:150',
@@ -102,9 +102,9 @@ class PembeliController extends Controller
                 'usia' => 'required',
 
              ]);
-                   
-             $pembeli = Pembeli::find($id)->update($request->all()); 
-                    
+
+             $pembeli = Pembeli::find($id)->update($request->all());
+
              return back()->with('success',' Data telah diperbaharui!');
             //
         //

@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">Data Order</div>
                     <div class="card-body">
-                        <form action="{{ route('obat.update', $obat->id) }}" method="post">
+                        <form action="{{ route('order.update', $order->id) }}" method="post">
                             @csrf
                             @method('put')
                             <div class="form-group">
@@ -52,7 +52,7 @@
                                 @enderror
                             </div>
 
-                            
+
 
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>

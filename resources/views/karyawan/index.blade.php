@@ -39,7 +39,7 @@
                                 @foreach ($karyawan as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->nama }}</td>
+                                        <td>{{ $data->nama_karyawan }}</td>
                                         <td>{{ $data->alamat }}</td>
                                         <td>{{ $data->nik }}</td>
                                         <td>{{ $data->no_telp }}</td>

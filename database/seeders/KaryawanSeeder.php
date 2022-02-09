@@ -14,8 +14,8 @@ class KaryawanSeeder extends Seeder
      */
     public function run()
     {
-        $karyawan = karyawan::create(['id_karyawan' => '001', 'nama_karyawan' => 'usop', 'alamat' => 'cilisung', 'nik' => '002', 'no_telp' => '003'] );
-        $karyawan1 = karyawan::create(['id_karyawan' => '002', 'nama_karyawan' => 'usep', 'alamat' => 'cileunyi', 'nik' => '003', 'no_telp' => '004'] );
+        $karyawan = karyawan::create(['id' => '001', 'nama_karyawan' => 'usop', 'alamat' => 'cilisung', 'nik' => '002', 'no_telp' => '003'] );
+        $karyawan1 = karyawan::create(['id' => '002', 'nama_karyawan' => 'usep', 'alamat' => 'cileunyi', 'nik' => '003', 'no_telp' => '004'] );
 
         
 

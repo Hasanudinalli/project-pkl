@@ -43,7 +43,7 @@ class KaryawanController extends Controller
         //
         $validated = $request->validate([
 
-            'nama' => 'required',
+            'nama_karyawan' => 'required',
             'alamat' => 'required',
             'nik' => 'required',
             'no_telp' => 'required',
@@ -51,7 +51,7 @@ class KaryawanController extends Controller
 
         $karyawan = new Karyawan;
 
-        $karyawan->nama = $request->nama;
+        $karyawan->nama_karyawan = $request->nama_karyawan;
         $karyawan->alamat = $request->alamat;
         $karyawan->nik = $request->nik;
         $karyawan->no_telp = $request->no_telp;
@@ -101,7 +101,7 @@ class KaryawanController extends Controller
         //
         $validated = $request->validate([
 
-            'nama' => 'required',
+            'nama_karyawan' => 'required',
             'alamat' => 'required',
             'nik' => 'required',
             'no_telp' => 'required',
@@ -109,7 +109,7 @@ class KaryawanController extends Controller
 
         $karyawan = new Karyawan;
 
-        $karyawan->nama = $request->nama;
+        $karyawan->nama_karyawan = $request->nama_karyawan;
         $karyawan->alamat = $request->alamat;
         $karyawan->nik = $request->nik;
         $karyawan->no_telp = $request->no_telp;

@@ -45,11 +45,11 @@ class OrderController extends Controller
             'id_karyawan' => 'required',
             'id_obat' => 'required',
             'jumlah_obat' => 'required',
-            
+
 
         ]);
 
-        $order = Order::findOrFail($id);
+        $order = Order::findOrFail($request);
 
         $order->id_transaksi = $request->id_transaksi;
         $order->id_karyawan = $request->id_karyawan;
@@ -104,7 +104,7 @@ class OrderController extends Controller
             'id_karyawan' => 'required',
             'id_obat' => 'required',
             'jumlah_obat' => 'required',
-            
+
 
         ]);
 

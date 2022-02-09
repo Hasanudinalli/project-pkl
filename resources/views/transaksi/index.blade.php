@@ -1,76 +1,73 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Transaksi</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
-
-<body>
-
-    <div class="container">
-        <h2 align="center">Transaksi Apotek</h2>
-        <h5>Nama Pembeli : </h5>
-        <h5>Tanggal Transaksi : </h5>
-        <h5 align="height">Nama Kasir : </h5>
-        <form action="{{ route('transaksi.create') }}" method="POST">
-            @csrf
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            @if (Session::has('success'))
-                <div class="alert alert-success text-center">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                    <p>{{ Session::get('success') }}</p>
-                </div>
-            @endif
-
-            <table class="table table-bordered" id="dynamicTable">
-                <tr>
-                    <th>Nama Obat</th>
-                    <th>Jumlah</th>
-                    <th>Action</th>
-
-                </tr>
-                <tr>
-                    <td><input type="text" name="addmore[0][nama_obat]" placeholder="Enter your Name"
-                            class="form-control" /></td>
-                    <td><input type="number" name="transaksi[0][jumlah_bayar]" placeholder="Enter your Qty"
-                            class="form-control" /></td>
-                    <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
-                </tr>
-            </table>
-
-            <button type="submit" class="btn btn-success">Bayar</button>
-        </form>
+@extends('adminlte::page')
+@section('content_header')
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-12">
+                <h1 class="m-0">Transaksi</h1>
+            </div>
+        </div>
     </div>
-    
+</div>
+@endsection
 
-    <script type="text/javascript">
-        var i = 0;
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    Transaksi
+                    <a href="{{route('transaksi.create')}}" class="btn btn-sm btn-outline-primary float-right">Transaksi</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table" id="example">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Total Harga</th>
 
-        $("#add").click(function() {
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    @php $no=1; @endphp
+                                    @foreach ($transaksi as $data)
+                                    <tr>
+                                        <td>{{$no++}}</td>
+                                        <td>{{$data->id}}</td>
+                                        <td>{{$data->total_harga}}</td>
 
-            ++i;
+                                        <td>
+                                            <form action="{{route('transaksi.destroy',$data->id)}}" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <a href="{{route('transaksi.edit',$data->id)}}" class="btn btn-outline-info">Edit</a><br>
+                                                <a href="{{route('transaksi.show',$data->id)}}" class="btn btn-outline-warning">Show</a><br>
+                                                <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapusnya')">Hapus</button>
+                                                </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
 
-        });
-        
+@section('css')
+    <link rel="stylesheet" href="{{asset('DataTables/datatables.min.css') }}">
+@endsection
 
-        $(document).on('click', '.remove-tr', function() {
-            $(this).parents('tr').remove();
-        });
-    </script>
-    
-
-</body>
-
-</html>
+@section('js')
+<script src="{{asset('Datatables/datatables.min.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+@endsection

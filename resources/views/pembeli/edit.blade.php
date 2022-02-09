@@ -29,6 +29,28 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
+                                                            <div class="form-group">
+                                <label for="">Alamat</label>
+                                <input type="text" name="alamat" value="{{ $pembeli->alamat }}"
+                                    class="form-control @error('alamat') is-invalid @enderror">
+                                @error('alamat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                                                            <div class="form-group">
+                                <label for="">Masukan Nama Usia</label>
+                                <input type="text" name="usia" value="{{ $pembeli->usia }}"
+                                    class="form-control @error('usia') is-invalid @enderror">
+                                @error('usia')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+
                             </div>
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
