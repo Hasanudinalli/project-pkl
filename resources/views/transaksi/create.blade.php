@@ -21,7 +21,7 @@
                  <form action="{{route('transaksi.store')}}" method="post">
                        @csrf
                        <div class="form-group">
-                             <label for="">Masukan Id</label>
+                             <label for="">Masukan Id </label>
                              <input type="text" name="id" class="form-control @error('id') is-invalid @enderror">
                        @error('id')
                              <span class="invalid-feedback" role="alert">
@@ -30,9 +30,39 @@
                          @enderror
                      </div>
                      <div class="form-group">
-                             <label for="">Masukan Total Harga</label>
-                             <input type="text" name="total_harga" class="form-control @error('total_harga') is-invalid @enderror">
-                       @error('total_harga')
+                             <label for="">Masukan Kode Obat</label>
+                             <input type="text" name="kode_transaksi" class="form-control @error('kode_transaksi') is-invalid @enderror">
+                       @error('kode_transaksi')
+                             <span class="invalid-feedback" role="alert">
+                                 <strong>Wajib Diisi</strong>
+                             </span>
+                         @enderror
+                     </div>
+
+                     <div class="form-group">
+                             <label for="">Masukan Nama Pelanggan</label>
+                             <input type="text" name="nama_pelanggan" class="form-control @error('nama_pelanggan') is-invalid @enderror">
+                       @error('nama_pelanggan')
+                             <span class="invalid-feedback" role="alert">
+                                 <strong>Wajib Diisi</strong>
+                             </span>
+                         @enderror
+                     </div>
+
+                     <div class="form-group">
+                             <label for="">Masukan Jenis Obat</label>
+                             <input type="text" name="jenis_transaksi" class="form-control @error('jenis_transaksi') is-invalid @enderror">
+                       @error('jenis_transaksi')
+                             <span class="invalid-feedback" role="alert">
+                                 <strong>Wajib Diisi</strong>
+                             </span>
+                         @enderror
+                     </div>
+
+                     <div class="form-group">
+                             <label for="">Masukan Tanggal Obat</label>
+                             <input type="text" name="tanggal_transaksi" class="form-control @error('tanggal_transaksi') is-invalid @enderror">
+                       @error('tanggal_transaksi')
                              <span class="invalid-feedback" role="alert">
                                  <strong>Wajib Diisi</strong>
                              </span>

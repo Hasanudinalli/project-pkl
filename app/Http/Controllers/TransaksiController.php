@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\transaksi;
 use Illuminate\Http\Request;
 
@@ -14,10 +13,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
-        $transaksi = transaksi::all();
+        $transaksi = Transaksi::all();
         return view('transaksi.index', compact('transaksi'));
-
     }
 
     /**
@@ -27,9 +24,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
-        return view('transaksi.create');
-
+        $transaksi = Transaksi::all();
+        return view('transaksi.create', compact('transaksi'));
     }
 
     /**
@@ -38,22 +34,35 @@ class TransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( Request $request)
     {
         $validated = $request->validate([
 
             'id' => 'required',
-            'total_harga' => 'required',
+            'kode_transaksi' => 'required',
+            'nama_pelanggan' => 'required',
+            'jenis_transaksi' => 'required',
+            'tanggal_transaksi' => 'required',
+
+
 
         ]);
 
-        $transaksi = new transaksi;
+        $transaksi = new Transaksi;
         $transaksi->id = $request->id;
-        $transaksi->total_harga = $request->total_harga;
+        $transaksi->kode_transaksi = $request->kode_transaksi;
+        $transaksi->nama_pelanggan = $request->nama_pelanggan;
+        $transaksi->jenis_transaksi= $request->jenis_transaksi;
+        $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
+
+
+
+
+
 
         $transaksi->save();
         return redirect()->route('transaksi.index');
-        //
+
     }
 
     /**
@@ -66,7 +75,6 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::findOrFail($id);
         return view('transaksi.show', compact('transaksi'));
-        //
     }
 
     /**
@@ -76,9 +84,9 @@ class TransaksiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {$transaksi = Transaksi::findOrFail($id);
+    {
+        $transaksi = Transaksi::findOrFail($id);
         return view('transaksi.edit', compact('transaksi'));
-        //
     }
 
     /**
@@ -88,20 +96,29 @@ class TransaksiController extends Controller
      * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,  $id)
     {
         $validated = $request->validate([
 
             'id' => 'required',
-            'total_harga' => 'required',
+            'kode_transaksi' => 'required',
+            'nama_pelanggan' => 'required',
+            'jenis_transaksi' => 'required',
+            'tanggal_transaksi' => 'required',
+
 
 
         ]);
 
         $transaksi = Transaksi::findOrFail($id);
-
         $transaksi->id = $request->id;
-        $transaksi->total_harga = $request->total_harga;
+        $transaksi->kode_transaksi = $request->kode_transaksi;
+        $transaksi->nama_pelanggan = $request->nama_pelanggan;
+        $transaksi->jenis_transaksi= $request->jenis_transaksi;
+        $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
+
+
+
 
 
         $transaksi->save();
@@ -119,6 +136,5 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::findOrFail($id);
         $transaksi->delete();
         return redirect()->route('transaksi.index');
-        //
     }
 }

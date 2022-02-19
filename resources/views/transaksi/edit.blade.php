@@ -22,7 +22,7 @@
                    @csrf
                    @method('put')
                    <div class="form-group">
-                             <label for="">Masukan Id</label>
+                             <label for="">Masukan Id </label>
                              <input type="text" name="id" value="{{$transaksi->id}}" class="form-control @error('id') is-invalid @enderror">
                        @error('id')
                              <span class="invalid-feedback" role="alert">
@@ -31,13 +31,44 @@
                          @enderror
                      </div>
                      <div class="form-group">
-                             <label for="">Masukan Total Harga</label>
-                             <input type="text" name="total_harga" value="{{$transaksi->total_harga}}" class="form-control @error('total_harga') is-invalid @enderror">
-                       @error('total_harga')
+                             <label for="">Masukan Kode Transaksi</label>
+                             <input type="text" name="kode_transaksi" value="{{$transaksi->kode_transaksi}}" class="form-control @error('kode_transaksi') is-invalid @enderror">
+                       @error('kode_transaksi')
                              <span class="invalid-feedback" role="alert">
                                  <strong>{{ $message }}</strong>
                              </span>
                          @enderror
+                         </div>
+
+                         <div class="form-group">
+                             <label for="">Masukan Nama Pelanggan </label>
+                             <input type="text" name="nama_pelanggan" value="{{$transaksi->nama_pelanggan}}" class="form-control @error('nama_pelanggan') is-invalid @enderror">
+                       @error('nama_pelanggan')
+                             <span class="invalid-feedback" role="alert">
+                                 <strong>{{ $message }}</strong>
+                             </span>
+                         @enderror
+                     </div>
+
+                     <div class="form-group">
+                             <label for="">Masukan Jenis Transaksi </label>
+                             <input type="text" name="jenis_transaksi" value="{{$transaksi->jenis_transaksi}}" class="form-control @error('jenis_transaksi') is-invalid @enderror">
+                       @error('jenis_transaksi')
+                             <span class="invalid-feedback" role="alert">
+                                 <strong>{{ $message }}</strong>
+                             </span>
+                         @enderror
+                     </div>
+
+                     <div class="form-group">
+                             <label for="">Masukan Tanggal Transaksi </label>
+                             <input type="text" name="tanggal_transaksi" value="{{$transaksi->tanggal_transaksi}}" class="form-control @error('tanggal_transaksi') is-invalid @enderror">
+                       @error('tanggal_transaksi')
+                             <span class="invalid-feedback" role="alert">
+                                 <strong>{{ $message }}</strong>
+                             </span>
+                         @enderror
+                     </div>
                         <div class="form-group">
                              <button type="reset" class="btn btn-outline-warning">Reset</button>
                              <button type="submit" class="btn btn-outline-primary">Simpan</button>

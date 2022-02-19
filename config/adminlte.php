@@ -246,39 +246,34 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        
+
         [
-            'text' => 'order',
-            'url'  => 'admin/order',
+            'text' => 'pelanggan',
+            'url'  => 'admin/pelanggan',
+            'icon' => 'far fa-fw fa-file'
+        ],
+
+        [
+            'text' => 'produk',
+            'url'  => 'admin/produk',
             'icon' => 'far fa-fw fa-file'
         ],
 
         [
             'text' => 'obat',
-            'url'  => 'admin/obat',
-            'icon' => 'far fa-fw fa-file'
-        ],
-
-        [
-            'text' => 'karyawan',
-            'url'  => 'admin/karyawan',
-            'icon' => 'far fa-fw fa-file'
-        ],
-
-        
-        [
-            'text' => 'transaksi',
             'url'  => 'admin/transaksi',
             'icon' => 'far fa-fw fa-file'
         ],
 
+
         [
-            'text' => 'pembeli',
-            'url'  => 'admin/pembeli',
+            'text' => 'beli',
+            'url'  => 'admin/beli',
             'icon' => 'far fa-fw fa-file'
         ],
 
-        
+
+
     ],
 
     /*

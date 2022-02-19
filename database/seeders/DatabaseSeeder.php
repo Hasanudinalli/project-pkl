@@ -16,21 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
         ]);
-        $this->call([
-            ObatSeeder::class,
-        ]);
-        
-        $this->call([
-            PembeliSeeder::class,
-        ]);
 
-        $this->call([
-            OrderSeeder::class,
-        ]);
 
-        $this->call([
-            KaryawanSeeder::class,
-        ]);
-        
+
+
+
+
     }
 }

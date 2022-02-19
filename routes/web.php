@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\ObatController;
-use App\Http\Controllers\PembeliController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BeliController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,32 +78,28 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         return view('pengarang.index');
     })->middleware(['role:admin']);
 
-    Route::get('obat', function () {
-        return view('obat.index');
+    Route::get('pelanggan', function () {
+        return view('pelanggan.index');
     })->middleware(['role:admin|pengguna']);
 
-    Route::resource('obat', ObatController::class);
+    Route::resource('pelanggan', PelangganController::class);
 
-    Route::get('pembeli', function () {
-        return view('pembeli.index');
+    Route::get('produk', function () {
+        return view('produk.index');
     })->middleware(['role:admin|pengguna']);
 
-    Route::resource('pembeli', PembeliController::class);
-
-    Route::get('karyawan', function () {
-        return view('karyawan.index');
-    })->middleware(['role:admin|pengguna']);
-    Route::resource('karyawan', KaryawanController::class);
+    Route::resource('produk', ProdukController::class);
 
     Route::get('transaksi', function () {
         return view('transaksi.index');
     })->middleware(['role:admin|pengguna']);
     Route::resource('transaksi', TransaksiController::class);
 
-    Route::get('order', function () {
-        return view('order.index');
+    Route::get('beli', function () {
+        return view('beli.index');
     })->middleware(['role:admin|pengguna']);
-    Route::resource('order', OrderController::class);
+    Route::resource('beli', BeliController::class);
+
 
 
 
