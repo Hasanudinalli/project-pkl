@@ -18,22 +18,11 @@ class CreateBelisTable extends Migration
             $table->integer('kode_konsumen');
 
             $table->BigInteger('kode_produk')->unsigned();
-            $table->foreign('kode_produk')
-            ->references('id')
-            ->on('produks')->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->foreign("kode_produk")->references('id')
+                ->on('produks')->onUpdate('cascade')
+                ->onDelete('cascade');
 
-            $table->BigInteger('kode_transaksi')->unsigned();
-            $table->foreign('kode_transaksi')
-            ->references('id')
-            ->on('transaksis')->onUpdate('cascade')
-            ->onDelete('cascade');
 
-            $table->BigInteger('kode_pelanggan')->unsigned();
-            $table->foreign('kode_pelanggan')
-            ->references('id')
-            ->on('pelanggans')->onUpdate('cascade')
-            ->onDelete('cascade');
             $table->integer('jumlah_produk');
             $table->integer('total_harga');
 

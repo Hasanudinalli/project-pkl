@@ -31,26 +31,8 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="">kode Transaksi</label>
-                                <input type="text" name="kode_transaksi" value="{{ $beli->kode_transaksi }}"
-                                    class="form-control @error('kode_transaksi') is-invalid @enderror" disabled>
-                                @error('kode_transaksi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for=""> Kode Pelanggan</label>
-                                <input type="text" name="kode_pelanggan" value="{{ $beli->kode_pelanggan }}"
-                                    class="form-control @error('kode_pelanggan') is-invalid @enderror" disabled>
-                                @error('kode_pelanggan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+
                             <div class="form-group">
                                 <label for=""> Jumlah Produk</label>
                                 <input type="text" name="jumlah_produk" value="{{ $beli->jumlah_produk }}"

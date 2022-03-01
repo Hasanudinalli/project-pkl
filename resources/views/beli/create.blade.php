@@ -39,24 +39,9 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="">Masukan Kode Transaksi</label>
-                                <input type="text" name="kode_transaksi" class="form-control @error('kode_transaksi') is-invalid @enderror">
-                                @error('kode_transaksi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="">Masukan Kode Pelanggan</label>
-                                <input type="text" name="kode_pelanggan" class="form-control @error('kode_pelanggan') is-invalid @enderror">
-                                @error('kode_pelanggan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+
+
                             <div class="form-group">
                                 <label for="">Masukan Jumlah Produk</label>
                                 <input type="text" name="jumlah_produk"
@@ -67,9 +52,21 @@
                                     </span>
                                 @enderror
                             </div>
-
-
                             <div class="form-group">
+                                <label for="">Masukan Harga Barang</label>
+                                <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
+                                    @foreach ($produk as $data)
+                                        <option value="{{ $data->id }}">{{ $data->harga_barang }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kode_produk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                             <div class="form-group">
                                 <label for="">Masukan Total Harga</label>
                                 <input type="text" name="total_harga"
                                     class="form-control @error('total_harga') is-invalid @enderror">
@@ -80,33 +77,10 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                        <label for="">Masukan Stock</label>
-                        <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
-                            @foreach ($produk as $data)
-                            <option value="{{ $data->id }}">{{ $data->stock }}</option>
-                            @endforeach
-                        </select>
-                        @error('kode_produk')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>Wajib Diisi</strong>
-                        </span>
-                        @enderror
-                    </div>
 
-                    <div class="form-group">
-                        <label for="">Masukan jumlah bayar</label>
-                        <select name="kode_pelanggan" class="form-control @error('kode_pelanggan') is-invalid @enderror">
-                            @foreach ($pelanggan as $data)
-                            <option value="{{ $data->id }}">{{ $data->jumlah_bayar}}</option>
-                            @endforeach
-                        </select>
-                        @error('kode_pelanggan')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>Wajib Diisi</strong>
-                        </span>
-                        @enderror
-                    </div>
+
+
+
 
 
                             <div class="form-group">

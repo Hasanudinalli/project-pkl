@@ -10,15 +10,6 @@
                         <form action="{{ route('produk.store') }}" method="post">
                             @csrf
 
-                            <div class="form-group">
-                                <label for="">Masukan Id</label>
-                                <input type="text" name="id" class="form-control @error('id') is-invalid @enderror">
-                                @error('id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
 
                             <div class="form-group">

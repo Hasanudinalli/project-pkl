@@ -19,16 +19,16 @@ class produk extends Model
         return $this->hasMany('App\Models\beli', 'kode_produk');
 
     }
-    public static function boot()
-    {
-        parent::boot();
-        self::deleting(function($beli){
-            if($beli->produk->count() > 0){
-                Alert::error('Gagal!','Data tidak bisa dihapus');
-                return false;
-            }
-        });
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     self::deleting(function($beli){
+    //         if($beli->produk->count() > 0){
+    //             Alert::error('Gagal!','Data tidak bisa dihapus');
+    //             return false;
+    //         }
+    //     });
+    // }
 
 
 }

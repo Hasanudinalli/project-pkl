@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\transaksi;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class TransaksiController extends Controller
 {
@@ -61,6 +63,7 @@ class TransaksiController extends Controller
 
 
         $transaksi->save();
+        Alert::success('Mantap','Data berhasil disimpan');
         return redirect()->route('transaksi.index');
 
     }
@@ -136,5 +139,6 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::findOrFail($id);
         $transaksi->delete();
         return redirect()->route('transaksi.index');
+        Alert::success('Mantap','Data berhasil dihapus');
     }
 }

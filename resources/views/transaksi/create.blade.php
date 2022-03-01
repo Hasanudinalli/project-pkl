@@ -30,7 +30,7 @@
                          @enderror
                      </div>
                      <div class="form-group">
-                             <label for="">Masukan Kode Obat</label>
+                             <label for="">Masukan Kode Transaksi</label>
                              <input type="text" name="kode_transaksi" class="form-control @error('kode_transaksi') is-invalid @enderror">
                        @error('kode_transaksi')
                              <span class="invalid-feedback" role="alert">

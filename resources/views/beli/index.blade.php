@@ -27,12 +27,16 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
+                                    <th>No</th>
                                     <th>Kode Konsumen</th>
                                     <th>Kode Produk</th>
-                                    <th>Kode Transaksi</th>
-                                    <th>Kode Pelanggan</th>
+
                                     <th>Jumlah Produk</th>
+                                    <th>Harga Barang</th>
                                     <th>Total Harga</th>
+
+
+
 
                                     <th>Aksi</th>
 
@@ -43,12 +47,12 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $data->kode_konsumen }}</td>
                                         <td>{{ $data->kode_produk }}</td>
-                                        <td>{{ $data->kode_transaksi }}</td>
-                                        <td>{{ $data->kode_pelanggan}}</td>
+
                                         <td>{{ $data->jumlah_produk}}</td>
+                                        <td>{{ $data->produk->harga_barang }}</td>
                                         <td>{{ $data->total_harga}}</td>
-                                        <td>{{$data->produk->stock}}</td>
-                                        <td>{{$data->pelanggan->jumlah_bayar}}</td>
+
+
 
 
                                         <td>

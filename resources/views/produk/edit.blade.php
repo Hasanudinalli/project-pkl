@@ -11,21 +11,11 @@
                             @csrf
                             @method('put')
 
-                            <div class="form-group">
-                                <label for=""> Id</label>
-                                <input type="text" name="id" value="{{ $produk->id }}"
-                                    class="form-control @error('id') is-invalid @enderror" disabled>
-                                @error('id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
 
                             <div class="form-group">
                                 <label for=""> Kode Produk</label>
                                 <input type="text" name="kode_produk" value="{{ $produk->kode_produk }}"
-                                    class="form-control @error('kode_produk') is-invalid @enderror" disabled>
+                                    class="form-control @error('kode_produk') is-invalid @enderror" >
                                 @error('kode_produk')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -65,10 +55,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for=""> Jumlah Bayar</label>
-                                <input type="text" name="jumlah_bayar" value="{{ $produk->jumlah_bayar }}"
-                                    class="form-control @error('jumlah_bayar') is-invalid @enderror" disabled>
-                                @error('jumlah_bayar')
+                                <label for=""> harga Barang</label>
+                                <input type="text" name="harga_barang" value="{{ $produk->harga_barang }}"
+                                    class="form-control @error('harga_barang') is-invalid @enderror" >
+                                @error('harga_barang')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

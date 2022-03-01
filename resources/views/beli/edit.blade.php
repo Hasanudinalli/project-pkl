@@ -32,27 +32,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="">Masukan Kode Transaksi</label>
-                                <input type="text" name="kode_transaksi" value="{{ $beli->kode_transaksi }}"
-                                    class="form-control @error('kode_transaksi') is-invalid @enderror">
-                                @error('kode_transaksi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for="">Masukan Kode Pelanggan</label>
-                                <input type="text" name="kode_pelanggan" value="{{ $beli->kode_pelanggan }}"
-                                    class="form-control @error('kode_pelanggan') is-invalid @enderror">
-                                @error('kode_pelanggan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
                             <div class="form-group">
                                 <label for="">Masukan Jumlah Produk</label>
@@ -64,6 +44,22 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label for="">Masukan Harga Barang</label>
+                                <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
+                                    @foreach ($produk as $data)
+                                        <option value="{{ $data->id }}">{{ $data->harga_barang }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kode_produk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+
 
                             <div class="form-group">
                                 <label for="">Masukan Total Harga</label>

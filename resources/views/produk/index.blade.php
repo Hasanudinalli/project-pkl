@@ -51,7 +51,6 @@
                             <table class="table">
                                 <tr>
                                     <th>NO</th>
-                                    <th>Id</th>
                                     <th>Kode Produk</th>
                                     <th>Nama Produk</th>
                                     <th>Jenis Produk</th>
@@ -65,7 +64,6 @@
                                 @foreach ($produk as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->id }}</td>
                                         <td>{{ $data->kode_produk }}</td>
                                         <td>{{ $data->nama_produk }}</td>
                                         <td>{{ $data->jenis_produk }}</td>

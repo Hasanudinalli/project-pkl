@@ -40,7 +40,6 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'id' => 'required',
             'kode_produk' => 'required',
             'nama_produk' => 'required',
             'jenis_produk' => 'required',
@@ -52,7 +51,6 @@ class ProdukController extends Controller
         ]);
 
         $produk = new Produk;
-        $produk->id = $request->id;
         $produk->kode_produk = $request->kode_produk;
         $produk->nama_produk = $request->nama_produk;
         $produk->jenis_produk= $request->jenis_produk;
@@ -105,7 +103,6 @@ class ProdukController extends Controller
     public function update(Request $request,  $id)
     {
         $validated = $request->validate([
-            'id' => 'required',
             'kode_produk' => 'required',
             'nama_produk' => 'required',
             'jenis_produk' => 'required',
@@ -117,7 +114,6 @@ class ProdukController extends Controller
         ]);
 
         $produk = Produk::findOrFail($id);
-        $produk->id = $request->id;
         $produk->kode_produk = $request->kode_produk;
         $produk->nama_produk = $request->nama_produk;
         $produk->jenis_produk= $request->jenis_produk;

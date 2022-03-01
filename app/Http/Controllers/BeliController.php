@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\produk;
-use App\Models\pelanggan;
 use App\Models\beli;
 use Illuminate\Http\Request;
 
@@ -18,7 +17,7 @@ class BeliController extends Controller
      */
     public function index()
     {
-        $beli = Beli::with('produk','pelanggan')->get();
+        $beli = Beli::with('produk')->get();
         return view('beli.index', compact('beli'));
 
         //
@@ -31,12 +30,9 @@ class BeliController extends Controller
      */
     public function create()
     {
-        $produk = Produk::all();
-        $pelanggan = Pelanggan::all();
+        $produk = produk::all();
 
-
-
-        return view('beli.create', compact('produk','pelanggan'));
+        return view('beli.create', compact('produk'));
 
         //
     }
@@ -50,40 +46,31 @@ class BeliController extends Controller
     public function store(Request $request)
     {
         //
-        $validated = $request->validate([
+        // $validated = $request->validate([
 
-            // 'id' => 'required',
-            'kode_konsumen' => 'required',
-            'kode_produk' => 'required',
-            'kode_transaksi' => 'required',
-            'kode_pelanggan' => 'required',
-            'jumlah_produk' => 'required',
-            'total_harga' => 'required',
+        //     'kode_konsumen' => 'required',
+        //     'kode_produk' => 'required',
+        //
+        //     'jumlah_produk' => 'required',
+        //     'total_harga' => 'required',
 
 
-        ]);
+        // ]);
 
         $beli = new Beli;
-        // $beli->id = $request->id;
         $beli->kode_konsumen = $request->kode_konsumen;
         $beli->kode_produk = $request->kode_produk;
-        $beli->kode_transaksi = $request->kode_transaksi;
-        $beli->kode_pelanggan = $request->kode_pelanggan;
+
         $beli->jumlah_produk = $request->jumlah_produk;
-        $beli->total_harga = $beli->produk->stock * $request->total_harga * $beli->kode_produk;
+        $beli->total_harga = $beli->produk->harga_barang * $beli->jumlah_produk;
 
 
 
 
-         //$produk = Produk::findOrFail($request->kode_produk);
-         //$produk->stock+= $request->stock;
+         produk::findOrFail($request->kode_produk);
+         $beli->produk->stock -= $beli->jumlah_produk;
+         $beli->produk->save();
 
-         //$produk->save();
-
-        // $pelanggan = Pelanggan::findOrFail($request->kode_pelanggan);
-        // $pelanggan->jumlah_bayar+= $request->jumlah_bayar;
-
-        // $pelanggan->save();
             $beli->save();
 
         return redirect()->route('beli.index');
@@ -99,13 +86,12 @@ class BeliController extends Controller
      */
     public function show($id)
     {
-        $produk = Produk::all();
-        $pelanggan = Pelanggan::all();
+        $produk = Produk::findOrFail($id);
 
 
 
 
-        return view('beli.show', compact( 'produk','pelanggan'));
+        return view('beli.show', compact( 'produk'));
 
     }
 
@@ -117,12 +103,9 @@ class BeliController extends Controller
      */
     public function edit($id)
     {
-        $produk = Produk::all();
-        $pelanggan = Pelanggan::all();
-
-
-
-        return view('beli.edit', compact('produk','pelanggan'));
+        $beli = Beli::findOrFail($id);
+        $produk = produk::all();
+        return view('beli.edit', compact('beli' ,'produk'));
 
     }
 
@@ -135,32 +118,34 @@ class BeliController extends Controller
      */
     public function update(Request $request,  $id)
     {
-        $validated = $request->validate([
+        //
+        // $validated = $request->validate([
 
-            'id' => 'required',
-            'kode_konsumen' => 'required',
-            'kode_produk' => 'required',
-            'kode_transaksi' => 'required',
-            'kode_pelanggan' => 'required',
-            'jumlah_produk' => 'required',
-            'total_harga' => 'required',
+        //     'kode_konsumen' => 'required',
+        //     'kode_produk' => 'required',
+        //
+        //     'jumlah_produk' => 'required',
+        //     'total_harga' => 'required',
 
 
-        ]);
+        // ]);
 
-        $beli = Beli::findOrFail($id);
-        $beli->id = $request->id;
+        $beli = new Beli;
         $beli->kode_konsumen = $request->kode_konsumen;
         $beli->kode_produk = $request->kode_produk;
-        $beli->kode_transaksi = $request->kode_transaksi;
-        $beli->kode_pelanggan = $request->kode_pelanggan;
+
         $beli->jumlah_produk = $request->jumlah_produk;
-        $beli->total_harga = $request->total_harga;
+        $beli->total_harga = $beli->produk->harga_barang * $beli->jumlah_produk;
 
 
 
 
-        $beli->save();
+         produk::findOrFail($request->kode_produk);
+         $beli->produk->stock -= $beli->jumlah_produk;
+         $beli->produk->save();
+
+            $beli->save();
+
         return redirect()->route('beli.index');
 
     }

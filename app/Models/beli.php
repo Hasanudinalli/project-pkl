@@ -10,7 +10,7 @@ class Beli extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'kode_konsumen', 'kode_produk', 'kode_transaksi', 'kode_pelanggan', 'jumlah_produk', 'total_harga'];
+    protected $fillable = ['id', 'kode_konsumen', 'kode_produk', 'jumlah_produk', 'total_harga'];
 
     public $timestamps = true;
 
@@ -19,11 +19,9 @@ class Beli extends Model
 
         return $this->belongsTo('App\Models\produk','kode_produk');
     }
-    public function pelanggan()
-    {
 
-        return $this->belongsTo('App\Models\pelanggan','kode_pelanggan');
-    }
+
+
 
 
 
@@ -34,7 +32,7 @@ class Beli extends Model
     {
         parent::boot();
         self::deleting(function($beli){
-            if($beli->pelanggan->count() > 0){
+            if($beli->produk->count() > 0){
                 Alert::error('Gagal!','Data tidak bisa dihapus');
                 return false;
             }
