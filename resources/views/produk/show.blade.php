@@ -12,9 +12,8 @@
                             @method('put')
 
 
-
                            <div class="form-group">
-                                <label for=""> Kode Produk </label>
+                                <label for=""> Kode Produk</label>
                                 <input type="text" name="kode_produk" value="{{ $produk->kode_produk }}"
                                     class="form-control @error('kode_produk') is-invalid @enderror" disabled>
                                 @error('kode_produk')
@@ -22,7 +21,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                                </div>
+
                             <div class="form-group">
                                 <label for=""> Nama Produk</label>
                                 <input type="text" name="nama_produk" value="{{ $produk->nama_produk }}"
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                <label for=""> Harga Barang</label>
+                                <label for=""> Harga Produk</label>
                                 <input type="text" name="harga_barang" value="{{ $produk->harga_barang }}"
                                     class="form-control @error('harga_barang') is-invalid @enderror" disabled>
                                 @error('harga_barang')
@@ -68,6 +68,9 @@
                                     </span>
                                 @enderror
                                 </div>
+
+
+
 
                             <div class="form-group">
 

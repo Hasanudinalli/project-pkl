@@ -28,12 +28,11 @@
                             <table class="table">
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode Konsumen</th>
                                     <th>Kode Produk</th>
 
                                     <th>Jumlah Produk</th>
                                     <th>Harga Barang</th>
-                                    <th>Total Harga</th>
+                                    <th>Total Harga </th>
 
 
 
@@ -45,12 +44,11 @@
                                 @foreach ($beli as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->kode_konsumen }}</td>
-                                        <td>{{ $data->kode_produk }}</td>
-
+                                        <td>{{ $data->produk->kode_produk }}</td>
                                         <td>{{ $data->jumlah_produk}}</td>
                                         <td>{{ $data->produk->harga_barang }}</td>
-                                        <td>{{ $data->total_harga}}</td>
+                                        <td>{{ $data->total_harga }}</td>
+
 
 
 

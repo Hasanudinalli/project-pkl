@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">Data Laporan Penjualan</h1>
+                    <h1 class="m-0">Data Beli</h1>
                 </div>
             </div>
         </div>
@@ -44,17 +44,17 @@
                     <div class="card-header">
 
                         <a href="{{ route('transaksi.create') }}" class="btn btn-sm btn-primary float-right">Tambah
-                            Data Produk</a>
+                            Data Beli</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
                                     <th>NO</th>
-                                    <th>Kode Transaksi</th>
-                                    <th>Nama Pelanggan</th>
-                                    <th>Jenis transaksi</th>
-                                    <th>tanggal_transaksi</th>
+                                  <th>Kode Produk</th>
+
+                                    <th>Nama Produk</th>
+                                    <th>Harga Beli</th>
 
                                     <th>Aksi</th>
 
@@ -63,11 +63,9 @@
                                 @foreach ($transaksi as $data)
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$data->id}}</td>
-                                        <td>{{$data->kode_transaksi}}</td>
-                                        <td>{{$data->nama_pelanggan}}</td>
-                                        <td>{{$data->jenis_transaksi}}</td>
-                                        <td>{{$data->tanggal_transaksi}}</td>
+                                        <td>{{$data->produk->kode_produk}}</td>
+                                        <td>{{$data->produk->nama_produk}}</td>
+                                        <td>{{$data->harga_beli}}</td>
 
                                         <td>
                                             <form action="{{ route('transaksi.destroy', $data->id) }}" method="post">

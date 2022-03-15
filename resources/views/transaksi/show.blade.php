@@ -16,30 +16,29 @@
      <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Transaksi</div>
+                <div class="card-header">Penjualan</div>
                 <div class="card-body">
                     <div class="form-group">
                              <label for="">Masukan Id </label>
                              <input type="text" name="id" value="{{$transaksi->id}}" class="form-control"  readonly>
                      </div>
+
                      <div class="form-group">
-                             <label for="">Masukan Kode Transaksi</label>
-                             <input type="text" name="kode_transaksi" value="{{$transaksi->kode_transaksi}}" class="form-control" readonly>
+                             <label for="">Masukan Kode Produk</label>
+                             <input type="text" name="kode_produk" value="{{$transaksi->kode_produk}}" class="form-control" readonly>
+                     </div>
+
+
+
+
+                     <div class="form-group">
+                             <label for="">Masukan Nama Produk</label>
+                             <input type="text" name="nama_produk" value="{{$transaksi->nama_produk}}" class="form-control" readonly>
                      </div>
 
                      <div class="form-group">
-                             <label for="">Masukan Nama Pelanggan</label>
-                             <input type="text" name="nama_pelanggan" value="{{$transaksi->nama_pelanggan}}" class="form-control" readonly>
-                     </div>
-
-                     <div class="form-group">
-                             <label for="">Masukan Jenis Transaksi</label>
-                             <input type="text" name="jenis_transaksi" value="{{$transaksi->jenis_transaksi}}" class="form-control" readonly>
-                     </div>
-
-                     <div class="form-group">
-                             <label for="">Masukan Tanggal Transaksi</label>
-                             <input type="text" name="tanggal_transaksi" value="{{$transaksi->tanggal_transaksi}}" class="form-control" readonly>
+                             <label for="">Masukan Harga Beli</label>
+                             <input type="text" name="harga_beli" value="{{$transaksi->harga_beli}}" class="form-control" readonly>
                      </div>
                         <div class="form-group">
                         <a href="{{route('transaksi.index')}}" class="btn btn-block btn-outline-primary">Kembali</a>

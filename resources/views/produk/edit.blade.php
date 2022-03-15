@@ -12,16 +12,17 @@
                             @method('put')
 
 
-                            <div class="form-group">
-                                <label for=""> Kode Produk</label>
+                             <div class="form-group">
+                                <label for="">Masukan Kode Produk</label>
                                 <input type="text" name="kode_produk" value="{{ $produk->kode_produk }}"
-                                    class="form-control @error('kode_produk') is-invalid @enderror" >
+                                    class="form-control @error('kode_produk') is-invalid @enderror">
                                 @error('kode_produk')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                </div>
+
+
                             <div class="form-group">
                                 <label for="">Masukan Nama Produk</label>
                                 <input type="text" name="nama_produk" value="{{ $produk->nama_produk }}"
@@ -55,7 +56,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for=""> harga Barang</label>
+                                <label for=""> harga produk</label>
                                 <input type="text" name="harga_barang" value="{{ $produk->harga_barang }}"
                                     class="form-control @error('harga_barang') is-invalid @enderror" >
                                 @error('harga_barang')
@@ -64,6 +65,8 @@
                                     </span>
                                 @enderror
                                 </div>
+
+
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
                                 <button type="submit" class="btn btn-outline-primary">Simpan</button>

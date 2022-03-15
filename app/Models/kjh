@@ -1,0 +1,6 @@
+<td>{{$no++}}</td>
+                                        <td>{{$data->id}}</td>
+                                        <td>{{$data->kode_transaksi}}</td>
+                                        <td>{{$data->nama_pelanggan}}</td>
+                                        <td>{{$data->jenis_transaksi}}</td>
+                                        <td>{{$data->tanggal_transaksi}}</td>

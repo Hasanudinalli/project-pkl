@@ -16,60 +16,58 @@
      <div class="row justify-content-center">
          <div class="col-md-12">
              <div class="card">
-                 <div class="card-header">Transaksi</div>
+                 <div class="card-header">Beli</div>
                  <div class="card-body">
                  <form action="{{route('transaksi.store')}}" method="post">
                        @csrf
-                       <div class="form-group">
-                             <label for="">Masukan Id </label>
-                             <input type="text" name="id" class="form-control @error('id') is-invalid @enderror">
-                       @error('id')
-                             <span class="invalid-feedback" role="alert">
-                                 <strong>Wajib Diisi</strong>
-                             </span>
-                         @enderror
-                     </div>
-                     <div class="form-group">
-                             <label for="">Masukan Kode Transaksi</label>
-                             <input type="text" name="kode_transaksi" class="form-control @error('kode_transaksi') is-invalid @enderror">
-                       @error('kode_transaksi')
-                             <span class="invalid-feedback" role="alert">
-                                 <strong>Wajib Diisi</strong>
-                             </span>
-                         @enderror
-                     </div>
+
 
                      <div class="form-group">
-                             <label for="">Masukan Nama Pelanggan</label>
-                             <input type="text" name="nama_pelanggan" class="form-control @error('nama_pelanggan') is-invalid @enderror">
-                       @error('nama_pelanggan')
-                             <span class="invalid-feedback" role="alert">
-                                 <strong>Wajib Diisi</strong>
-                             </span>
-                         @enderror
-                     </div>
+                                <label for="">Masukan Kode Produk</label>
+                                <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
+                                    @foreach ($produk as $data)
+                                        <option value="{{ $data->id }}">{{ $data->kode_produk }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kode_produk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+
+
+
 
                      <div class="form-group">
-                             <label for="">Masukan Jenis Obat</label>
-                             <input type="text" name="jenis_transaksi" class="form-control @error('jenis_transaksi') is-invalid @enderror">
-                       @error('jenis_transaksi')
-                             <span class="invalid-feedback" role="alert">
-                                 <strong>Wajib Diisi</strong>
-                             </span>
-                         @enderror
-                     </div>
+                                <label for="">Masukan Nama Produk</label>
+                                <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
+                                    @foreach ($produk as $data)
+                                        <option value="{{ $data->id }}">{{ $data->nama_produk }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kode_produk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                     <div class="form-group">
-                             <label for="">Masukan Tanggal Obat</label>
-                             <input type="text" name="tanggal_transaksi" class="form-control @error('tanggal_transaksi') is-invalid @enderror">
-                       @error('tanggal_transaksi')
-                             <span class="invalid-feedback" role="alert">
-                                 <strong>Wajib Diisi</strong>
-                             </span>
-                         @enderror
-                     </div>
+                            <div class="form-group">
+                                <label for="">Masukan Harga Beli</label>
+                                <input type="text" name="harga_beli" class="form-control @error('harga_beli') is-invalid @enderror">
+                                @error('harga_beli')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                     <div class="form-group">
+
+
+
+                                         <div class="form-group">
                         <button type="reset" class="btn btn-outline-warning">Reset</button>
                         <button type="submit" class="btn btn-outline-primary">Simpan</button>
                      </div>

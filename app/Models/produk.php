@@ -9,8 +9,8 @@ class produk extends Model
 {
     use HasFactory;
 
-    protected $visible = [ 'id' ,'kode_produk', 'nama_produk', 'jenis_produk', 'stock', 'harga_barang'];
-    protected $fillable = [  'id' ,'kode_produk', 'nama_produk', 'jenis_produk', 'stock', 'harga_barang'];
+    protected $visible = [  'kode_produk', 'nama_produk', 'jenis_produk', 'stock', 'harga_barang' ];
+    protected $fillable = [   'kode_produk', 'nama_produk', 'jenis_produk', 'stock', 'harga_barang'];
     public $timestamps = true;
 
     public function beli()

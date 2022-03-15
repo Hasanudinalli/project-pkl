@@ -10,7 +10,7 @@ class Beli extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'kode_konsumen', 'kode_produk', 'jumlah_produk', 'total_harga'];
+    protected $fillable = ['id',  'kode_produk', 'jumlah_produk', 'harga_barang', 'total_harga' ];
 
     public $timestamps = true;
 
@@ -28,16 +28,16 @@ class Beli extends Model
 
 
 
-    public static function boot()
-    {
-        parent::boot();
-        self::deleting(function($beli){
-            if($beli->produk->count() > 0){
-                Alert::error('Gagal!','Data tidak bisa dihapus');
-                return false;
-            }
-        });
-    }
+    //public static function boot()
+    //{
+        //parent::boot();
+        //self::deleting(function($beli){
+            //if($beli->produk->count() > 0){
+               // Alert::error('Gagal!','Data tidak bisa dihapus');
+                //return false;
+            //}
+       // });
+    //}
 
 
 

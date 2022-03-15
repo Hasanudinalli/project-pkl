@@ -11,27 +11,9 @@
                             @csrf
                             @method('put')
 
-                            <div class="form-group">
-                                <label for=""> Id</label>
-                                <input type="text" name="id" value="{{ $pelanggan->id }}"
-                                    class="form-control @error('id') is-invalid @enderror" disabled>
-                                @error('id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for=""> Kode Pelanggan</label>
-                                <input type="text" name="kode_pelanggan" value="{{ $pelanggan->kode_pelanggan }}"
-                                    class="form-control @error('kode_pelanggan') is-invalid @enderror" disabled>
-                                @error('kode_pelanggan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+
                            <div class="form-group">
                                 <label for=""> Nama Pelanggan </label>
                                 <input type="text" name="nama_pelanggan" value="{{ $pelanggan->nama_pelanggan }}"
@@ -43,7 +25,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for=""> jumlah bayar</label>
+                                <label for=""> Harga</label>
                                 <input type="text" name="jumlah_bayar" value="{{ $pelanggan->jumlah_bayar }}"
                                     class="form-control @error('jumlah_bayar') is-invalid @enderror" disabled>
                                 @error('jumlah_bayar')

@@ -11,8 +11,7 @@
                             @csrf
 
 
-
-                            <div class="form-group">
+                         <div class="form-group">
                                 <label for="">Masukan Kode Produk</label>
                                 <input type="text" name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
                                 @error('kode_produk')
@@ -21,6 +20,7 @@
                                     </span>
                                 @enderror
                             </div>
+
 
                             <div class="form-group">
                                 <label for="">Masukan Nama Produk</label>
@@ -52,7 +52,7 @@
                             </div>
 
                                 <div class="form-group">
-                                <label for="">Masukan Harga Barang</label>
+                                <label for="">Masukan Harga produk</label>
                                 <input type="text" name="harga_barang" class="form-control @error('harga_barang') is-invalid @enderror">
                                 @error('harga_barang')
                                     <span class="invalid-feedback" role="alert">
@@ -60,6 +60,8 @@
                                     </span>
                                 @enderror
                             </div>
+
+
 
 
 

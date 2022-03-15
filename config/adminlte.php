@@ -260,14 +260,14 @@ return [
         ],
 
         [
-            'text' => 'obat',
+            'text' => 'beli',
             'url'  => 'admin/transaksi',
             'icon' => 'far fa-fw fa-file'
         ],
 
 
         [
-            'text' => 'beli',
+            'text' => 'detailbeli',
             'url'  => 'admin/beli',
             'icon' => 'far fa-fw fa-file'
         ],

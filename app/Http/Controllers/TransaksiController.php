@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\produk;
 use App\Models\transaksi;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,7 +16,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::all();
+        $transaksi = Transaksi::with('produk')->get();
         return view('transaksi.index', compact('transaksi'));
     }
 
@@ -26,8 +27,9 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $transaksi = Transaksi::all();
-        return view('transaksi.create', compact('transaksi'));
+        $produk = Produk::all();
+
+        return view('transaksi.create', compact('produk'));
     }
 
     /**
@@ -40,26 +42,29 @@ class TransaksiController extends Controller
     {
         $validated = $request->validate([
 
-            'id' => 'required',
-            'kode_transaksi' => 'required',
-            'nama_pelanggan' => 'required',
-            'jenis_transaksi' => 'required',
-            'tanggal_transaksi' => 'required',
+            //'id' => 'required',
+            //'kode_produk' => 'required',
+            //'nama_produk' => 'required',
+            //'harga_beli' => 'required',
 
 
 
         ]);
 
         $transaksi = new Transaksi;
-        $transaksi->id = $request->id;
-        $transaksi->kode_transaksi = $request->kode_transaksi;
-        $transaksi->nama_pelanggan = $request->nama_pelanggan;
-        $transaksi->jenis_transaksi= $request->jenis_transaksi;
-        $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
+        $transaksi->kode_produk = $request->kode_produk ;
+        $transaksi->nama_produk = $transaksi->produk->nama_produk ;
+        $transaksi->harga_beli = $request->harga_beli ;
 
 
 
 
+
+
+
+        Produk::findOrFail($request->kode_produk);
+
+        $transaksi->produk->save();
 
 
         $transaksi->save();
@@ -76,8 +81,13 @@ class TransaksiController extends Controller
      */
     public function show( $id)
     {
-        $transaksi = Transaksi::findOrFail($id);
-        return view('transaksi.show', compact('transaksi'));
+        $produk = Produk::findOrFail($id);
+
+
+
+
+        return view('transaksi.show', compact( 'produk'));
+
     }
 
     /**
@@ -89,7 +99,8 @@ class TransaksiController extends Controller
     public function edit($id)
     {
         $transaksi = Transaksi::findOrFail($id);
-        return view('transaksi.edit', compact('transaksi'));
+        $produk = produk::all();
+        return view('transaksi.edit', compact('transaksi' ,'produk'));
     }
 
     /**
@@ -103,22 +114,28 @@ class TransaksiController extends Controller
     {
         $validated = $request->validate([
 
-            'id' => 'required',
-            'kode_transaksi' => 'required',
-            'nama_pelanggan' => 'required',
-            'jenis_transaksi' => 'required',
-            'tanggal_transaksi' => 'required',
+            //'kode_produk' => 'required',
+            //'nama_produk' => 'required',
+            //'harga_beli' => 'required',
 
 
 
         ]);
 
-        $transaksi = Transaksi::findOrFail($id);
-        $transaksi->id = $request->id;
-        $transaksi->kode_transaksi = $request->kode_transaksi;
-        $transaksi->nama_pelanggan = $request->nama_pelanggan;
-        $transaksi->jenis_transaksi= $request->jenis_transaksi;
-        $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
+        $transaksi = new Transaksi;
+        $transaksi->kode_produk = $request->kode_produk ;
+        $transaksi->nama_produk = $transaksi->produk->nama_produk ;
+        $transaksi->harga_beli = $transaksi->produk->harga_beli ;
+
+
+
+
+
+
+
+        Produk::findOrFail($request->kode_produk);
+
+        $transaksi->produk->save();
 
 
 

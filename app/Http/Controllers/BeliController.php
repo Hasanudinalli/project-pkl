@@ -48,7 +48,6 @@ class BeliController extends Controller
         //
         // $validated = $request->validate([
 
-        //     'kode_konsumen' => 'required',
         //     'kode_produk' => 'required',
         //
         //     'jumlah_produk' => 'required',
@@ -58,11 +57,18 @@ class BeliController extends Controller
         // ]);
 
         $beli = new Beli;
-        $beli->kode_konsumen = $request->kode_konsumen;
         $beli->kode_produk = $request->kode_produk;
-
         $beli->jumlah_produk = $request->jumlah_produk;
+        $beli->harga_barang = $beli->produk->harga_barang * $beli->jumlah_produk;
         $beli->total_harga = $beli->produk->harga_barang * $beli->jumlah_produk;
+
+
+
+
+
+
+
+
 
 
 
@@ -121,21 +127,17 @@ class BeliController extends Controller
         //
         // $validated = $request->validate([
 
-        //     'kode_konsumen' => 'required',
         //     'kode_produk' => 'required',
         //
         //     'jumlah_produk' => 'required',
-        //     'total_harga' => 'required',
 
 
         // ]);
 
         $beli = new Beli;
-        $beli->kode_konsumen = $request->kode_konsumen;
-        $beli->kode_produk = $request->kode_produk;
-
+        $beli->kode_produk = $beli->produk->kode_produk ;
         $beli->jumlah_produk = $request->jumlah_produk;
-        $beli->total_harga = $beli->produk->harga_barang * $beli->jumlah_produk;
+        $beli->harga_barang = $beli->produk->harga_barang * $beli->jumlah_produk;
 
 
 

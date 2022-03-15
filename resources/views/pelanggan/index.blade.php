@@ -51,9 +51,8 @@
                             <table class="table">
                                 <tr>
                                     <th>NO</th>
-                                    <th>Kode Pelanggan</th>
                                     <th>Nama Pelanggan</th>
-                                    <th>jumlah bayar</th>
+                                    <th>Harga</th>
                                     <th>Alamat</th>
 
                                     <th>Aksi</th>
@@ -63,8 +62,7 @@
                                 @foreach ($pelanggan as $data)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $data->id }}</td>
-                                        <td>{{ $data->kode_pelanggan }}</td>
+
                                         <td>{{ $data->nama_pelanggan }}</td>
                                         <td>{{ $data->jumlah_bayar }}</td>
                                         <td>{{ $data->alamat }}</td>

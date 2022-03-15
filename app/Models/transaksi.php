@@ -10,13 +10,12 @@ class transaksi extends Model
 {
     use HasFactory;
 
-    protected $visible  = ['id', 'kode_transaksi', 'nama_pelanggan', 'jenis_transaksi', 'tanggal_transaksi'];
-    protected $fillable = ['id',  'kode_transaksi', 'jenis_transaksi', 'tanggal_transaksi'];
+    protected $fillable = [ 'kode_produk', 'nama_produk', 'harga_beli'];
 
-    public function beli()
+    public function produk()
     {
 
-        return $this->hasMany('App\Models\beli', 'kode_transaksi');
+        return $this->belongsTo('App\Models\produk','kode_produk');
 
     }
 

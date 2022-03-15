@@ -11,16 +11,7 @@
                             @csrf
                             @method('put')
 
-                            <div class="form-group">
-                                <label for="">Masukan Kode Konsumen</label>
-                                <input type="text" name="kode_konsumen" value="{{ $beli->kode_konsumen }}"
-                                    class="form-control @error('kode_konsumen') is-invalid @enderror">
-                                @error('kode_konsumen')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
+
                             <div class="form-group">
                                 <label for=""> Kode Produk</label>
                                 <input type="text" name="kode_produk" value="{{ $beli->kode_produk }}"
@@ -33,11 +24,23 @@
                             </div>
 
 
+
                             <div class="form-group">
                                 <label for=""> Jumlah Produk</label>
                                 <input type="text" name="jumlah_produk" value="{{ $beli->jumlah_produk }}"
                                     class="form-control @error('jumlah_produk') is-invalid @enderror" disabled>
                                 @error('jumlah_produk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for=""> Harga Produk</label>
+                                <input type="text" name="harga_produk" value="{{ $beli->harga_produk }}"
+                                    class="form-control @error('harga_produk') is-invalid @enderror" disabled>
+                                @error('harga_produk')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -54,7 +57,9 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
+
+
+
 
                                 <a href="{{ route('beli.index') }}" class="btn btn-block btn-primary">Kembali</a>
                             </div>

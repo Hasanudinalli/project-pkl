@@ -9,8 +9,8 @@ class pelanggan extends Model
 {
     use HasFactory;
 
-    protected $visible = ['id', 'kode_pelanggan', 'nama_pelanggan', 'jumlah_bayar', 'alamat'];
-    protected $fillable = [ 'id', 'kode_pelanggan', 'nama_pelanggan', 'jumlah_bayar', 'alamat'];
+    protected $visible = ['id',  'nama_pelanggan', 'jumlah_bayar', 'alamat'];
+    protected $fillable = [ 'id',  'nama_pelanggan', 'jumlah_bayar', 'alamat'];
     public $timestamps = true;
 
 
@@ -21,14 +21,5 @@ class pelanggan extends Model
         return $this->hasMany('App\Models\beli', 'kode_pelanggan');
 
     }
-    public static function boot()
-    {
-        parent::boot();
-        self::deleting(function($beli){
-            if($beli->pelanggan->count() > 0){
-                Alert::error('Gagal!','Data tidak bisa dihapus');
-                return false;
-            }
-        });
-    }
+
 }

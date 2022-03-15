@@ -55,7 +55,8 @@
                                     <th>Nama Produk</th>
                                     <th>Jenis Produk</th>
                                     <th>Stock</th>
-                                    <th>Harga Barang</th>
+                                    <th>Harga Produk</th>
+
 
                                     <th>Aksi</th>
 

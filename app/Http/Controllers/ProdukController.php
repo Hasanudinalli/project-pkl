@@ -48,6 +48,7 @@ class ProdukController extends Controller
 
 
 
+
         ]);
 
         $produk = new Produk;
@@ -56,6 +57,7 @@ class ProdukController extends Controller
         $produk->jenis_produk= $request->jenis_produk;
         $produk->stock = $request->stock;
         $produk->harga_barang = $request->harga_barang;
+
 
 
 
@@ -111,6 +113,7 @@ class ProdukController extends Controller
 
 
 
+
         ]);
 
         $produk = Produk::findOrFail($id);
@@ -119,6 +122,7 @@ class ProdukController extends Controller
         $produk->jenis_produk= $request->jenis_produk;
         $produk->stock = $request->stock;
         $produk->harga_barang = $request->harga_barang;
+
 
 
 

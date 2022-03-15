@@ -11,16 +11,6 @@
                             @csrf
                             @method('put')
 
-                            <div class="form-group">
-                                <label for="">Masukan Kode Konsumen</label>
-                                <input type="text" name="kode_konsumen" value="{{ $beli->kode_konsumen}}"
-                                    class="form-control @error('kode_konsumen') is-invalid @enderror">
-                                @error('kode_konsumen')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
 
                             <div class="form-group">
                                 <label for="">Masukan Kode Produk</label>
@@ -32,6 +22,7 @@
                                     </span>
                                 @enderror
                             </div>
+
 
 
                             <div class="form-group">
@@ -46,7 +37,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="">Masukan Harga Barang</label>
+                                <label for="">Masukan Harga Produk</label>
                                 <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
                                     @foreach ($produk as $data)
                                         <option value="{{ $data->id }}">{{ $data->harga_barang }}</option>
@@ -61,16 +52,10 @@
 
 
 
-                            <div class="form-group">
-                                <label for="">Masukan Total Harga</label>
-                                <input type="text" name="total_harga" value="{{ $beli->total_harga }}"
-                                    class="form-control @error('total_harga') is-invalid @enderror">
-                                @error('total_harga')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+
+
+
+
 
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>

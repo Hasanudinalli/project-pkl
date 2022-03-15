@@ -44,9 +44,7 @@ class PelangganController extends Controller
         //
         $validated = $request->validate([
 
-            'id' => 'required',
-            'kode_pelanggan' => 'required',
-            'nama_pelanggan' => 'required',
+             'nama_pelanggan' => 'required',
             'jumlah_bayar' => 'required',
             'alamat' => 'required',
 
@@ -55,8 +53,6 @@ class PelangganController extends Controller
         ]);
 
         $pelanggan = new Pelanggan;
-        $pelanggan->id = $request->id;
-        $pelanggan->kode_pelanggan = $request->kode_pelanggan;
         $pelanggan->nama_pelanggan = $request->nama_pelanggan;
         $pelanggan->jumlah_bayar = $request->jumlah_bayar;
         $pelanggan->alamat = $request->alamat;
@@ -106,8 +102,6 @@ class PelangganController extends Controller
     {
         $validated = $request->validate([
 
-            'id' => 'required',
-            'kode_pelanggan' => 'required',
             'nama_pelanggan' => 'required',
             'jumlah_bayar' => 'required',
             'alamat' => 'required',
@@ -117,8 +111,6 @@ class PelangganController extends Controller
         ]);
 
         $pelanggan = Pelanggan::findOrFail($id);
-        $pelanggan->id = $request->id;
-        $pelanggan->kode_pelanggan = $request->kode_pelanggan;
         $pelanggan->nama_pelanggan = $request->nama_pelanggan;
         $pelanggan->jumlah_bayar = $request->jumlah_bayar;
         $pelanggan->alamat = $request->alamat;
