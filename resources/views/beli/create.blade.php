@@ -12,7 +12,7 @@
 
 
                             </div>
-                             <div class="form-group">
+                             {{-- <div class="form-group">
                                 <label for="">Masukan Kode Produk</label>
                                 <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
                                     @foreach ($produk as $data)
@@ -24,17 +24,23 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div> --}}
+
+
+
+                            <div class="form-group">
+                                <label for="">Masukan Nama Produk</label>
+                                <select name="id_produk" class="form-control @error('nama_produk') is-invalid @enderror">
+                                    @foreach ($produk as $data)
+                                        <option value="{{ $data->id }}">{{ $data->nama_produk }}</option>
+                                    @endforeach
+                                </select>
+                                @error('nama_produk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-
-
-
-
-
-
-
-
-
-
 
                             <div class="form-group">
                                 <label for="">Masukan Jumlah Produk</label>
@@ -46,32 +52,6 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="">Masukan Harga Produk</label>
-                                <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
-                                    @foreach ($produk as $data)
-                                        <option value="{{ $data->id }}">{{ $data->harga_barang }}</option>
-                                    @endforeach
-                                </select>
-                                @error('kode_produk')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                             <div class="form-group">
                                 <button type="reset" class="btn btn-outline-warning">Reset</button>

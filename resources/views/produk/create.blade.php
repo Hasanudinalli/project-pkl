@@ -11,15 +11,6 @@
                             @csrf
 
 
-                         <div class="form-group">
-                                <label for="">Masukan Kode Produk</label>
-                                <input type="text" name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
-                                @error('kode_produk')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
 
                             <div class="form-group">
@@ -34,12 +25,13 @@
 
                             <div class="form-group">
                                 <label for="">Masukan Jenis Produk</label>
-                                <input type="text" name="jenis_produk" class="form-control @error('jenis_produk') is-invalid @enderror">
-                                @error('jenis_produk')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <select name="jenis_produk" class="form-control @error('nama_produk') is-invalid @enderror">
+                                    <option value="Tablet">Tablet</option>
+                                    <option value="Kapsul">Kapsul</option>
+                                    <option value="Sirup">Sirup</option>
+
+
+                                </select>
                             </div>
                              <div class="form-group">
                                 <label for="">Masukan Stock</label>

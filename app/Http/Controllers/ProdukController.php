@@ -40,7 +40,6 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'kode_produk' => 'required',
             'nama_produk' => 'required',
             'jenis_produk' => 'required',
             'stock' => 'required',
@@ -52,7 +51,6 @@ class ProdukController extends Controller
         ]);
 
         $produk = new Produk;
-        $produk->kode_produk = $request->kode_produk;
         $produk->nama_produk = $request->nama_produk;
         $produk->jenis_produk= $request->jenis_produk;
         $produk->stock = $request->stock;

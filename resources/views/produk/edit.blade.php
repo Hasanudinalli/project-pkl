@@ -12,16 +12,6 @@
                             @method('put')
 
 
-                             <div class="form-group">
-                                <label for="">Masukan Kode Produk</label>
-                                <input type="text" name="kode_produk" value="{{ $produk->kode_produk }}"
-                                    class="form-control @error('kode_produk') is-invalid @enderror">
-                                @error('kode_produk')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
 
                             <div class="form-group">
                                 <label for="">Masukan Nama Produk</label>

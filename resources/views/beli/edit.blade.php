@@ -12,11 +12,22 @@
                             @method('put')
 
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="">Masukan Kode Produk</label>
                                 <input type="text" name="kode_produk" value="{{ $beli->kode_produk }}"
                                     class="form-control @error('kode_produk') is-invalid @enderror">
                                 @error('kode_produk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="">Masukan Nama Produk</label>
+                                <input type="text" name="nama_produk" value="{{ $beli->nama_produk }}"
+                                    class="form-control @error('nama_produk') is-invalid @enderror">
+                                @error('nama_produk')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

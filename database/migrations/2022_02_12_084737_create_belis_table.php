@@ -15,18 +15,11 @@ class CreateBelisTable extends Migration
     {
         Schema::create('belis', function (Blueprint $table) {
             $table->id();
-
-            $table->BigInteger('kode_produk')->unsigned();
-            $table->foreign("kode_produk")->references('id')
+            $table->BigInteger('id_produk')->unsigned();
+            $table->foreign('id_produk')->references('id')
                 ->on('produks')->onUpdate('cascade')
                 ->onDelete('cascade');
-
-
-
-
-
             $table->integer('jumlah_produk');
-            $table->integer('harga_barang');
             $table->integer('total_harga');
 
 

@@ -23,6 +23,17 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
+                                <label for=""> Nama Produk</label>
+                                <input type="text" name="nama_produk" value="{{ $beli->nama_produk }}"
+                                    class="form-control @error('nama_produk') is-invalid @enderror" disabled>
+                                @error('nama_produk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
 
 
                             <div class="form-group">

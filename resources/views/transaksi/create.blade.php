@@ -22,7 +22,7 @@
                        @csrf
 
 
-                     <div class="form-group">
+                     {{-- <div class="form-group">
                                 <label for="">Masukan Kode Produk</label>
                                 <select name="kode_produk" class="form-control @error('kode_produk') is-invalid @enderror">
                                     @foreach ($produk as $data)
@@ -34,7 +34,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
 
 
 

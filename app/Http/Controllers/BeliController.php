@@ -57,27 +57,23 @@ class BeliController extends Controller
         // ]);
 
         $beli = new Beli;
-        $beli->kode_produk = $request->kode_produk;
+        $beli->id_produk = $request->id_produk;
         $beli->jumlah_produk = $request->jumlah_produk;
-        $beli->harga_barang = $beli->produk->harga_barang * $beli->jumlah_produk;
-        $beli->total_harga = $beli->produk->harga_barang * $beli->jumlah_produk;
+
+        $produk = produk::findOrFail($request->id_produk);
+        $produk->stock -= $request->jumlah_produk;
+        $produk->save();
+
+        $beli->total_harga = $beli->jumlah_produk * $produk->harga_barang ;
 
 
 
+        // $produk = new produk;
+        // $produk->stock -= $request->jumlah_produk;
+        // $produk->save();
 
 
-
-
-
-
-
-
-
-         produk::findOrFail($request->kode_produk);
-         $beli->produk->stock -= $beli->jumlah_produk;
-         $beli->produk->save();
-
-            $beli->save();
+        $beli->save();
 
         return redirect()->route('beli.index');
 
@@ -136,6 +132,7 @@ class BeliController extends Controller
 
         $beli = new Beli;
         $beli->kode_produk = $beli->produk->kode_produk ;
+        $beli->nama_produk = $beli->nama_produk ;
         $beli->jumlah_produk = $request->jumlah_produk;
         $beli->harga_barang = $beli->produk->harga_barang * $beli->jumlah_produk;
 

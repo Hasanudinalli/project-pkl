@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\BeliController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,11 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         return view('pengarang.index');
     })->middleware(['role:admin']);
 
-    Route::get('pelanggan', function () {
-        return view('pelanggan.index');
-    })->middleware(['role:admin|pengguna']);
 
-    Route::resource('pelanggan', PelangganController::class);
 
     Route::get('produk', function () {
         return view('produk.index');

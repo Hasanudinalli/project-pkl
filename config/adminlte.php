@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'M Hasanudin ali',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>hasan</b>udin',
+    'logo_img' => 'vendor/adminlte/dist/img/hasan.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -247,11 +247,7 @@ return [
             'can'  => 'manage-blog',
         ],
 
-        [
-            'text' => 'pelanggan',
-            'url'  => 'admin/pelanggan',
-            'icon' => 'far fa-fw fa-file'
-        ],
+
 
         [
             'text' => 'produk',
@@ -259,18 +255,21 @@ return [
             'icon' => 'far fa-fw fa-file'
         ],
 
+        // [
+        //     'text' => 'beli',
+        //     'url'  => 'admin/transaksi',
+        //     'icon' => 'far fa-fw fa-file'
+        // ],
+
+
         [
             'text' => 'beli',
-            'url'  => 'admin/transaksi',
-            'icon' => 'far fa-fw fa-file'
-        ],
-
-
-        [
-            'text' => 'detailbeli',
             'url'  => 'admin/beli',
             'icon' => 'far fa-fw fa-file'
         ],
+
+
+
 
 
 

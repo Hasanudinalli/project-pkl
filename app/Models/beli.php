@@ -10,14 +10,14 @@ class Beli extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id',  'kode_produk', 'jumlah_produk', 'harga_barang', 'total_harga' ];
+    protected $fillable = ['id', 'jumlah_produk', 'total_harga' ];
 
     public $timestamps = true;
 
     public function produk()
     {
 
-        return $this->belongsTo('App\Models\produk','kode_produk');
+        return $this->belongsTo('App\Models\produk','id_produk');
     }
 
 

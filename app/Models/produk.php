@@ -16,7 +16,7 @@ class produk extends Model
     public function beli()
     {
 
-        return $this->hasMany('App\Models\beli', 'kode_produk');
+        return $this->hasMany('App\Models\beli', 'id_produk');
 
     }
     // public static function boot()
